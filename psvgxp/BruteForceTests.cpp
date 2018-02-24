@@ -9,6 +9,8 @@ void enumerate_0x00000000_0x08000000_orig(const SceGxmProgram& header, ScePsp2Sh
    std::uint64_t* instr_raw_ptr = (std::uint64_t*)((char*)opt->gxpData + maybe_asm_offset_abs);
 
    std::uint8_t opcode = 0;
+   std::uint8_t data_format = 0;
+   std::uint8_t predicate = 0;
 
    std::uint8_t unk4 = 0;
    std::uint8_t unk3 = 0; 
@@ -101,7 +103,7 @@ void enumerate_0x00000000_0x08000000_orig(const SceGxmProgram& header, ScePsp2Sh
                                                                                        //{
                                                                                           //for(op3 = 0; op3 <= 7; op3++)
                                                                                           //{
-                                                                                             *instr_raw_ptr = INSTR_OP4_0x00000000_0x08000000(opcode, 
+                                                                                             *instr_raw_ptr = INSTR_OP4_0x00000000_0x08000000(opcode, data_format, predicate,
                                                                                                                         unk4, unk3, swz_alt_op1, unk2, alt_opt0, abs_op1, alt_opt2, alt_opt3, 
                                                                                                                         swz_alt_op3, op3_swz, swz_alt_op2, unk1, unk0, swz_mask16, swz_mask32, 
                                                                                                                         swz_en, abs_op2, neg_op2, abs_op3, neg_op3, opt1, opt0,
@@ -145,6 +147,8 @@ void enumerate_0x00000000_0x08000000(const SceGxmProgram& header, ScePsp2ShaderP
    std::uint64_t* instr_raw_ptr = (std::uint64_t*)((char*)opt->gxpData + maybe_asm_offset_abs);
 
    std::uint8_t opcode = 0;
+   std::uint8_t data_format = 0;
+   std::uint8_t predicate = 0;
 
    std::uint8_t unk4 = 0;
    std::uint8_t unk3 = 0; 
@@ -239,7 +243,7 @@ void enumerate_0x00000000_0x08000000(const SceGxmProgram& header, ScePsp2ShaderP
                                                                                        //{
                                                                                           //for(op3 = 0; op3 <= 7; op3++)
                                                                                           //{
-                                                                                             *instr_raw_ptr = INSTR_OP4_0x00000000_0x08000000(opcode,
+                                                                                             *instr_raw_ptr = INSTR_OP4_0x00000000_0x08000000(opcode, data_format, predicate,
                                                                                                                         unk4, unk3, swz_alt_op1, unk2, alt_opt0, abs_op1, alt_opt2, alt_opt3, 
                                                                                                                         swz_alt_op3, op3_swz, swz_alt_op2, unk1, unk0, swz_mask16, swz_mask32, 
                                                                                                                         swz_en, abs_op2, neg_op2, abs_op3, neg_op3, opt1, opt0,
