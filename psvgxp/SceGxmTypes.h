@@ -96,8 +96,8 @@ typedef struct SceGxmProgramParameter // SceGxmProgramParameter
 {
    std::uint32_t name_offset; //offset from here to string name
 
-   std::uint32_t type;   //[unused(16):buffer_type(4):component_count(4):parameter_type(4):category(4)]
-                         //buffer_type - applicable for constants, not applicable for samplers (buffer, default, texture)
+   std::uint32_t type;   //[unused(16):container_index(4):component_count(4):parameter_type(4):category(4)]
+                         //container_index - applicable for constants, not applicable for samplers (buffer, default, texture)
                          //component_count -  applicable for constants, not applicable for samplers (select size like float2, float3, float3 ...)
                          //parameter_type -  applicable for constants, not applicable for samplers (select type like float, half, fixed ...)  - SceGxmParameterType
                          //category -  select constant or sampler - SceGxmParameterCategory
