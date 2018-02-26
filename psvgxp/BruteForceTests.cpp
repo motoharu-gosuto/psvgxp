@@ -3,10 +3,9 @@
 #include "InstructionEncoders.h"
 #include "Disassembler.h"
 
-void enumerate_0x00000000_0x08000000_orig(const SceGxmProgram& header, ScePsp2ShaderPerfOptions* opt)
+void enumerate_0x00000000_0x08000000_orig(const SceGxmProgram* header, ScePsp2ShaderPerfOptions* opt)
 {
-   std::uint64_t maybe_asm_offset_abs = ((char*)&header.maybe_asm_offset - (char*)&header) + header.maybe_asm_offset;
-   std::uint64_t* instr_raw_ptr = (std::uint64_t*)((char*)opt->gxpData + maybe_asm_offset_abs);
+   std::uint64_t* instr_raw_ptr = get_instr_ptr(opt, header, 0);
 
    std::uint8_t opcode = 0;
    std::uint8_t data_format = 0;
@@ -141,10 +140,9 @@ void enumerate_0x00000000_0x08000000_orig(const SceGxmProgram& header, ScePsp2Sh
    }
 }
 
-void enumerate_0x00000000_0x08000000(const SceGxmProgram& header, ScePsp2ShaderPerfOptions* opt)
+void enumerate_0x00000000_0x08000000(const SceGxmProgram* header, ScePsp2ShaderPerfOptions* opt)
 {
-   std::uint64_t maybe_asm_offset_abs = ((char*)&header.maybe_asm_offset - (char*)&header) + header.maybe_asm_offset;
-   std::uint64_t* instr_raw_ptr = (std::uint64_t*)((char*)opt->gxpData + maybe_asm_offset_abs);
+   std::uint64_t* instr_raw_ptr = get_instr_ptr(opt, header, 0);
 
    std::uint8_t opcode = 0;
    std::uint8_t data_format = 0;
@@ -276,6 +274,75 @@ void enumerate_0x00000000_0x08000000(const SceGxmProgram& header, ScePsp2ShaderP
                   }
                   ///=========
                }
+            }
+         }
+      }
+   }
+}
+
+void enumerate_0x08000000_0x10000000_swizzles(const SceGxmProgram* header, ScePsp2ShaderPerfOptions* opt)
+{
+   std::uint64_t* instr_raw_ptr = get_instr_ptr(opt, header, 0);
+
+   std::uint8_t opcode1 = 1; 
+   std::uint8_t opcode2 = 0;
+
+   std::uint8_t swz_mask3 = 0; 
+   std::uint8_t swz_mask2 = 0; 
+   std::uint8_t swz_mask1 = 0;
+   std::uint8_t swz_en = 0;
+
+   std::uint8_t op1_swz_c3x = 0;
+   std::uint8_t op1_swz_c30 = 0;
+   std::uint8_t op1_swz_c2x = 0;
+   std::uint8_t op1_swz_c20 = 0;
+   std::uint8_t op1_swz_c1 = 0;
+   std::uint8_t op1_swz_c0 = 0;
+
+   std::uint8_t swz_alt_op2 = 0;
+   std::uint8_t op2_swz = 0;
+
+   for(swz_mask3 = 1; swz_mask3 <= 1; swz_mask3++)
+   {
+      for(swz_mask2 = 0; swz_mask2 <= 1; swz_mask2++)
+      {
+         for(swz_mask1 = 1; swz_mask1 <= 1; swz_mask1++)
+         {
+            for(swz_en = 0; swz_en <= 1; swz_en++)
+            {
+               //============
+               for(op1_swz_c3x = 3; op1_swz_c3x <= 3; op1_swz_c3x++)
+               {
+                  for(op1_swz_c30 = 1; op1_swz_c30 <= 1; op1_swz_c30++)
+                  {
+                     for(op1_swz_c2x = 0; op1_swz_c2x <= 3; op1_swz_c2x++)
+                     {
+                        for(op1_swz_c20 = 0; op1_swz_c20 <= 1; op1_swz_c20++)
+                        {
+                           for(op1_swz_c1 = 0; op1_swz_c1 <= 7; op1_swz_c1++)
+                           {
+                              for(op1_swz_c0 = 0; op1_swz_c0 <= 7; op1_swz_c0++)
+                              {
+                                 for(swz_alt_op2 = 0; swz_alt_op2 <= 3; swz_alt_op2++)
+                                 {
+                                    for(op2_swz = 0; op2_swz <= 3; op2_swz++)
+                                    {
+                                       *instr_raw_ptr = INSTR_OP3_0x08000000_0x10000000(opcode1,0,
+                                                                                        0,op1_swz_c3x,0,0,op1_swz_c30,0,0,
+                                                                                        swz_alt_op2,op2_swz,0,swz_mask3,swz_mask2,swz_mask1,
+                                                                                        swz_en,0,0,0,op1_swz_c2x,0,
+                                                                                        0,0,0,op1_swz_c20,op1_swz_c1,op1_swz_c0,opcode2,0,0);
+
+                                       disasm_gxp_implicit(opt, *instr_raw_ptr);
+                                    }
+                                 }
+                              }
+                           }
+                        }
+                     }
+                  }
+               }
+               //============
             }
          }
       }
