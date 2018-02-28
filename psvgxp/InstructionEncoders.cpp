@@ -107,7 +107,7 @@ std::uint64_t INSTR_0x00000000_0x08000000_LOWER4(std::uint8_t opt2, std::uint8_t
 
    std::uint64_t op3_shift = (std::uint64_t)op3_masked << SumBits<>::result;
    std::uint64_t op2_shift = (std::uint64_t)op2_masked << SumBits<op3_t>::result;
-   std::uint64_t op1_shift = (std::uint64_t) op1_masked << SumBits<op2_t, op3_t>::result;
+   std::uint64_t op1_shift = (std::uint64_t)op1_masked << SumBits<op2_t, op3_t>::result;
    std::uint64_t op1_swz_shift = (std::uint64_t)op1_swz_masked << SumBits<op1_t, op2_t, op3_t>::result;
    std::uint64_t op2_swz_shift = (std::uint64_t)op2_swz_masked << SumBits<op1_swz_t, op1_t, op2_t, op3_t>::result;
    std::uint64_t op0_shift = (std::uint64_t)op0_masked << SumBits<op2_swz_t, op1_swz_t, op1_t, op2_t, op3_t>::result;
@@ -120,7 +120,7 @@ std::uint64_t INSTR_0x00000000_0x08000000_LOWER4(std::uint8_t opt2, std::uint8_t
 std::uint64_t INSTR_0x00000000_0x08000000(std::uint8_t opcode1, std::uint8_t data_format, std::uint8_t predicate, std::uint8_t unk4, std::uint8_t unk3, std::uint8_t swz_alt_op1, std::uint8_t unk2, std::uint8_t alt_opt0, std::uint8_t abs_op1, std::uint8_t alt_opt2, std::uint8_t alt_opt3, std::uint8_t swz_alt_op3, std::uint8_t op3_swz, std::uint8_t swz_alt_op2, std::uint8_t unk1, std::uint8_t unk0, std::uint8_t swz_mask16, std::uint8_t swz_mask32, std::uint8_t swz_en, std::uint8_t abs_op2, std::uint8_t neg_op2, std::uint8_t abs_op3, std::uint8_t neg_op3, std::uint8_t opt1, std::uint8_t opt0, std::uint8_t opt2, std::uint8_t opt3, std::uint8_t op0, std::uint8_t op2_swz, std::uint8_t op1_swz, std::uint8_t op1, std::uint8_t op2, std::uint8_t op3)
 {
    std::uint64_t hi = INSTR_0x00000000_0x08000000_HIGHER4(opcode1, data_format, predicate, unk4, unk3, swz_alt_op1, unk2, alt_opt0, abs_op1, alt_opt2, alt_opt3, swz_alt_op3, op3_swz, swz_alt_op2, unk1, unk0, swz_mask16, swz_mask32, swz_en, abs_op2, neg_op2, abs_op3, neg_op3, opt1, opt0);
-   
+
    std::uint64_t lo = INSTR_0x00000000_0x08000000_LOWER4(opt2, opt3, op0, op2_swz, op1_swz, op1, op2, op3);
 
    return (hi << 32) | lo;
