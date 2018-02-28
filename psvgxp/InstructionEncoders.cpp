@@ -229,7 +229,7 @@ std::uint64_t INSTR_0x08000000_0x10000000_LOWER4(std::uint8_t opt1, std::uint8_t
    std::uint64_t op1_swz_c20_shift = (std::uint64_t)op1_swz_c20_masked << SumBits<op1_swz_c1_t, op1_swz_c0_t, opcode2_t, op1_t, op2_t>::result;
    std::uint64_t op0_shift = (std::uint64_t)op0_masked << SumBits<op1_swz_c20_t, op1_swz_c1_t, op1_swz_c0_t, opcode2_t, op1_t, op2_t>::result;
    std::uint64_t opt2_shift = (std::uint64_t)opt2_masked << SumBits<op0_t, op1_swz_c20_t, op1_swz_c1_t, op1_swz_c0_t, opcode2_t, op1_t, op2_t>::result;
-   std::uint64_t opt1_shift = (std::uint64_t)opt1_masked << SumBits<opt2_t, op0_t, op1_swz_c20_t, op1_swz_c1_t, op1_swz_c0_t, opcode2_t, op1_t, op2_t>::result; 
+   std::uint64_t opt1_shift = (std::uint64_t)opt1_masked << SumBits<opt2_t, op0_t, op1_swz_c20_t, op1_swz_c1_t, op1_swz_c0_t, opcode2_t, op1_t, op2_t>::result;
 
    return opt1_shift | opt2_shift | op0_shift | op1_swz_c20_shift | op1_swz_c1_shift | op1_swz_c0_shift | opcode2_shift | op1_shift | op2_shift;
 }
@@ -242,3 +242,6 @@ std::uint64_t INSTR_0x08000000_0x10000000(std::uint8_t opcode1, std::uint8_t pre
 
    return (hi << 32) | lo;
 }
+
+//=====================
+
