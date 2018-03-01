@@ -1,0 +1,85 @@
+{
+   "definitions" : [
+      {
+         "name" : "INSTR_0x00000000_0x08000000",
+         "high" :
+         {
+            "opcode1" : 5,
+            "data_format" : 1,
+            "predicate" : 2,
+            "unk4" : 1,
+            "unk3" : 1,
+            "swz_alt_op1" : 1,
+            "unk2" : 1,
+            "alt_opt0" : 1,
+            "abs_op1" : 1,
+            "alt_opt2" : 1,
+            "alt_opt3" : 1,
+            "swz_alt_op3" : 1,
+            "op3_swz" : 2,
+            "swz_alt_op2" : 1,
+            "unk1" : 1,
+            "unk0" : 1,
+            "swz_mask16" : 1,
+            "swz_mask32" : 1,
+            "swz_en" : 1,
+            "abs_op2" : 1,
+            "neg_op2" : 1,
+            "abs_op3" : 1,
+            "neg_op3" : 1,
+            "opt1" : 1,
+            "opt0" : 2
+         },
+         "low" :
+         {
+            "opt2" : 2,
+            "opt3" : 2,
+            "op0" : 6,
+            "op2_swz" : 2,
+            "op1_swz" : 2,
+            "op1" : 6,
+            "op2" : 6,
+            "op3" : 6
+         }
+      },
+      {
+         "name" : "INSTR_0x08000000_0x10000000",
+         "high" : 
+         {
+            "opcode1" : 5,
+            "predicate" : 3,
+            "unk2" : 1,
+            "op1_swz_c3x" : 2,
+            "unk1" : 1,
+            "alt_opt0" : 1,
+            "op1_swz_c30" : 1,
+            "alt_opt1" : 1,
+            "alt_opt2" : 1,
+            "swz_alt_op2" : 2,
+            "op2_swz" : 2,
+            "unk0" : 1,
+            "swz_mask3" : 1,
+            "swz_mask2" : 1,
+            "swz_mask1" : 1,
+            "swz_en" : 1,
+            "abs_op1" : 1,
+            "neg_op1" : 1,
+            "abs_op2" : 1,
+            "op1_swz_c2x" : 2,
+            "opt0" : 2
+         },
+         "low" :
+         {
+            "opt1" : 2,
+            "opt2" : 2,
+            "op0" : 6,
+            "op1_swz_c20" : 1,
+            "op1_swz_c1" : 3,
+            "op1_swz_c0" : 3,
+            "opcode2" : 3,
+            "op1" : 6,
+            "op2" : 6
+         }
+      }
+   ]
+}
