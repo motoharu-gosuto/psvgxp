@@ -119,6 +119,98 @@
             "op1" : 6,
             "op2" : 6
          }
+      },
+      {
+         "name" : "INSTR_0x18000000_0x20000000_DOT",
+         "high" : 
+         {
+            "opcode1" : 5,
+            "predicate" : 3,
+            "unk12" : 1,
+            "unk11" : 1,
+            "opcode2" : 1,
+            "unk10" : 1,
+            "alt_opt0" : 1,
+            "unk9" : 1,
+            "alt_opt1" : 1,
+            "unk8" : 1,
+            "unk7" : 1,
+            "abs_op2" : 1,
+            "swz_en_strange1" : 1,
+            "swz_en_strange0" : 1,
+            "unk6" : 1,
+            "swz_mask3" : 1,
+            "swz_mask2" : 1,
+            "swz_mask1" : 1,
+            "swz_en" : 1,
+            "neg_op1" : 1,
+            "abs_op1" : 1,
+            "unk5" : 1,
+            "unk4" : 1,
+            "unk3" : 1,
+            "opt0" : 2
+         },
+         "low" :
+         {
+            "opt1" : 2,
+            "op2i" : 2,
+            "op0" : 6,
+            "swz_alt_op2" : 2,
+            "op2_swz" : 2,
+            "unk2" : 1,
+            "unk1" : 1,
+            "unk0" : 1,
+            "op1_swz_c2" : 3,
+            "op1_swz_c1" : 3,
+            "op1_swz_c0" : 3,
+            "op1" : 6
+         }
+      },
+      {
+         "name" : "INSTR_0x18000000_0x20000000_MAD",
+         "high" : 
+         {
+            "opcode1" : 5,
+            "predicate" : 3,
+            "unk6" : 1,
+            "swz_alt_op3_2" : 1,
+            "opcode2" : 1,
+            "unk5" : 1,
+            "alt_opt0" : 1,
+            "unk4" : 1,
+            "alt_opt1" : 1,
+            "unk3" : 1,
+            "unk2" : 1,
+            "abs_op2" : 1,
+            "op0_strange1" : 1,
+            "op0_strange0" : 1,
+            "unk1" : 1,
+            "swz_mask3" : 1,
+            "swz_mask2" : 1,
+            "swz_mask1" : 1,
+            "swz_en" : 1,
+            "neg_op1" : 1,
+            "abs_op1" : 1,
+            "neg_op3" : 1,
+            "abs_op3" : 1,
+            "swz_alt_op2_2" : 1,
+            "opt0" : 2
+         },
+         "low" :
+         {
+            "opt1" : 2,
+            "op2i" : 2,
+            "op0" : 6,
+            "swz_alt_op2_x" : 2,
+            "op2_swz" : 2,
+            "swz_alt_op3_x" : 2,
+            "op3_swz" : 2,
+            "op3i" : 2,
+            "unk0" : 1,
+            "swz_alt_op1" : 3,
+            "op1_swz" : 2,
+            "op1" : 6
+         }
       }
    ]
 }
