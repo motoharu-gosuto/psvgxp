@@ -80,6 +80,45 @@
             "op1" : 6,
             "op2" : 6
          }
+      },
+      {
+         "name" : "INSTR_0x10000000_0x18000000",
+         "high" : 
+         {
+            "opcode1" : 5,
+            "predicate" : 3,
+            "unk2" : 1,
+            "op1_swz_c3x" : 2,
+            "unk1" : 1,
+            "alt_opt0" : 1,
+            "op1_swz_c30" : 1,
+            "alt_opt1" : 1,
+            "alt_opt2" : 1,
+            "swz_alt_op2" : 2,
+            "op2_swz" : 2,
+            "unk0" : 1,
+            "swz_mask3" : 1,
+            "swz_mask2" : 1,
+            "swz_mask1" : 1,
+            "swz_en" : 1,
+            "abs_op1" : 1,
+            "neg_op1" : 1,
+            "abs_op2" : 1,
+            "op1_swz_c2x" : 2,
+            "opt0" : 2
+         },
+         "low" :
+         {
+            "opt1" : 2,
+            "opt2" : 2,
+            "op0" : 6,
+            "op1_swz_c20" : 1,
+            "op1_swz_c1" : 3,
+            "op1_swz_c0" : 3,
+            "opcode2" : 3,
+            "op1" : 6,
+            "op2" : 6
+         }
       }
    ]
 }
