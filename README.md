@@ -37,7 +37,7 @@ By varying increment value you can cycle through different fields of instruction
 If you want to explore complex dependencies of fields or tweak group of specific fields you can execute single calls like:
 
 ```cpp
-std::uint64_t instr =  0x20000000;
+std::uint64_t instr =  0x2000000000000000;
 disasm_gxp_explicit(&opt, &header, instr);
 ```
 
