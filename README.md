@@ -13,7 +13,7 @@ For example desired range can be 0x20000000_-_0x28000000.
 2. You need to figure out what fields are used in the instruction. Like encoding of operands, swizzles etc.
 There is already extensive documentation for this. Basic fields include: RS2, RSI2, R6, RI2, RIO6, RSWZ2, RSWZ3, IMM6, IDX6, CNST6.
 
-For different instruction fields may be located in different places. However they usually have same meaning. It should not be a big problem to locate them based on already existing documentation.
+For different instructions - fields may be located in different places. However they usually have same meaning. It should not be a big problem to locate them based on already existing documentation.
 
 The way to figure out fields is to poke psp2shaderperf using donor shader file. 
 If you want to go through linear combinations it can be done in cycle like:
