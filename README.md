@@ -55,7 +55,7 @@ to generate code for encoder of your instruction here:
 
 https://github.com/motoharu-gosuto/psvgxp/blob/master/psvgxp/InstructionEncoders.cpp
 
-4. Having instruction encoder greatly simplifies further testing. Instead of tweaking single 64 bit value you can explicitly tweak different combinations of fields that you want. Then this value can be stored in instr_raw_ptr. You can then do extensive testing by executing single calls and tweaking different fields like this:
+4. Having instruction encoder greatly simplifies further testing. Instead of tweaking single 64 bit value you can explicitly tweak different combinations of fields that you want. Then this value can be stored in instr. You can then do extensive testing by executing single calls and tweaking different fields like this:
 
 ```
 std::uint64_t instr = INSTR_OP4_0x00000000_0x08000000(4, 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0);
