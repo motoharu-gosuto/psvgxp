@@ -569,3 +569,261 @@ void bruteforce_0x18000000_0x20000000_mad_swizzles()
    }
    */
 }
+
+void brutforce_0x20000000_0x28000000_raw()
+{
+   /*
+   {
+      std::uint8_t op_sel2 = 0; 
+      std::uint8_t op_sel1 = 0;
+      std::uint8_t gr_sel = 0;
+
+      std::uint8_t opcode2 = 0;
+      
+
+      for(std::uint8_t opcode3 = 0; opcode3 <= 7; opcode3++)
+      {
+         std::uint64_t instr = INSTR_0x20000000_0x28000000_GR_SEL_0_OP_SEL2_0_OP_SEL1_0_OPCODE2_1_DOT(4,0,0,0,op_sel2,0,0,opcode2,gr_sel,op_sel1,0,3,0x0F,7,opcode3,0,3,0x80);
+         disasm_gxp_explicit(&opt, &header, instr);
+      }
+   }
+   */
+
+   /*
+   {
+      std::uint8_t op_sel2 = 0; 
+      std::uint8_t op_sel1 = 0;
+      std::uint8_t gr_sel = 0;
+
+      std::uint8_t opcode2 = 1;
+      
+
+      for(std::uint8_t opcode3 = 0; opcode3 <= 7; opcode3++)
+      {
+         std::uint64_t instr = INSTR_0x20000000_0x28000000_GR_SEL_0_OP_SEL2_0_OP_SEL1_0_OPCODE2_1_DOT(4,0,0,0,op_sel2,0,0,opcode2,gr_sel,op_sel1,0,0,0,0,opcode3,0,0x40,0);
+         disasm_gxp_explicit(&opt, &header, instr);
+      }
+   }
+   */
+   
+   /*
+   {
+      std::uint8_t op_sel2 = 0; 
+      std::uint8_t op_sel1 = 0;
+      std::uint8_t gr_sel = 0;
+
+      std::uint8_t opcode2 = 2;
+      
+      for(std::uint8_t opcode3 = 0; opcode3 <= 7; opcode3++)
+      {
+         std::uint64_t instr = INSTR_0x20000000_0x28000000_GR_SEL_0_OP_SEL2_0_OP_SEL1_0_OPCODE2_2_DOT(4,0,0,0,op_sel2,0,0,opcode2,gr_sel,op_sel1,0,0,0,0,opcode3,0,0x40,0);
+         disasm_gxp_explicit(&opt, &header, instr);
+      }
+   }
+   */ 
+   
+   /*
+   {
+      std::uint8_t op_sel2 = 0; 
+      std::uint8_t op_sel1 = 0;
+      std::uint8_t gr_sel = 0;
+
+      std::uint8_t opcode2 = 3;
+      
+      for(std::uint8_t opcode3 = 0; opcode3 <= 7; opcode3++)
+      {
+         std::uint64_t instr = INSTR_0x20000000_0x28000000_GR_SEL_0_OP_SEL2_0_OP_SEL1_0_OPCODE2_3_MUL(4,0,0,0,op_sel2,0,0,opcode2,gr_sel,op_sel1,0,0,0,0,opcode3,2,0x40,0);
+         disasm_gxp_explicit(&opt, &header, instr);
+      }
+   }
+   */
+   
+   /*
+   {
+      std::uint8_t op_sel2 = 0; 
+      std::uint8_t op_sel1 = 0;
+      std::uint8_t gr_sel = 0;
+
+      std::uint8_t opcode2 = 4;
+      
+      for(std::uint8_t opcode3 = 0; opcode3 <= 7; opcode3++)
+      {
+         std::uint64_t instr = INSTR_0x20000000_0x28000000_GR_SEL_0_OP_SEL2_0_OP_SEL1_0_OPCODE2_4_ADD(4,0,0,0,op_sel2,0,0,opcode2,gr_sel,op_sel1,0,0,0,0,opcode3,0,0x40,0);
+         disasm_gxp_explicit(&opt, &header, instr);
+      }      
+   }
+   */
+   
+   /*
+   {
+      std::uint8_t op_sel2 = 0; 
+      std::uint8_t op_sel1 = 0;
+      std::uint8_t gr_sel = 0;
+
+      std::uint8_t opcode2 = 5;
+      
+      for(std::uint8_t opcode3 = 0; opcode3 <= 7; opcode3++)
+      {
+         std::uint64_t instr = INSTR_0x20000000_0x28000000_GR_SEL_0_OP_SEL2_0_OP_SEL1_0_OPCODE2_5_MOV(4,0,0,0,op_sel2,0,0,opcode2,gr_sel,op_sel1,0,0,0,0,opcode3,0,0x40,0);
+         disasm_gxp_explicit(&opt, &header, instr);
+      }
+   }
+   */
+   
+   /*
+   {
+      std::uint8_t op_sel2 = 0; 
+      std::uint8_t op_sel1 = 0;
+      std::uint8_t gr_sel = 0;
+
+      std::uint8_t opcode2 = 6;
+      
+      for(std::uint8_t opcode3 = 0; opcode3 <= 7; opcode3++)
+      {
+         std::uint64_t instr = INSTR_0x20000000_0x28000000_GR_SEL_0_OP_SEL2_0_OP_SEL1_0_OPCODE2_6_RSQ(4,0,0,0,op_sel2,0,0,opcode2,gr_sel,op_sel1,0,0,0,0,opcode3,0,0x40,0);
+         disasm_gxp_explicit(&opt, &header, instr);
+      }
+   }
+   */
+   
+   /*
+   {
+      std::uint8_t op_sel2 = 0; 
+      std::uint8_t op_sel1 = 0;
+      std::uint8_t gr_sel = 0;
+
+      std::uint8_t opcode2 = 7;
+      
+      for(std::uint8_t opcode3 = 0; opcode3 <= 7; opcode3++)
+      {
+         std::uint64_t instr = INSTR_0x20000000_0x28000000_GR_SEL_0_OP_SEL2_0_OP_SEL1_0_OPCODE2_7_RCP(4,0,0,0,op_sel2,0,0,opcode2,gr_sel,op_sel1,0,0,0,0,opcode3,0,0,0);
+         disasm_gxp_explicit(&opt, &header, instr);
+      }
+   }
+   */
+}
+
+void brutforce_0x20000000_0x28000000_opcodes_partial()
+{
+   //partial ocode bruteforce
+   /*
+   {
+      //looks like main regulator is indeed opcode2
+      //opcode3 influences on range producing invalid opcodes
+      //need to create a table with extensive list of combinations vs instructions
+      //then each instruction can be documented
+
+      std::uint8_t op_sel2 = 1; 
+      std::uint8_t op_sel1 = 1;
+      std::uint8_t gr_sel = 1;
+
+      std::uint8_t opcode2 = 7;
+
+      for(std::uint8_t opN_sel = 0; opN_sel <=3; opN_sel++)
+      {
+         for(std::uint8_t opcode3 = 0; opcode3 <= 7; opcode3++)
+         {
+            std::uint64_t instr = INSTR_0x20000000_0x28000000_GR_SEL_0_OP_SEL2_0_OP_SEL1_0_OPCODE2_0_MAD(4,0,0,0,op_sel2,0,0,0,0,0,opcode2,gr_sel,op_sel1,0,0,0,0,0,0,0,0,0,opcode3,opN_sel,0,0,0,0,0,0,0);
+            disasm_gxp_explicit(&opt, &header, instr);
+         }
+         std::cout << "===================" << std::endl;
+      }
+   }
+   */
+}
+
+void brutforce_0x20000000_0x28000000_opcodes_full()
+{
+   /*
+   //full opcode bruteforce
+   {
+      //looks like main regulator is indeed opcode2
+      //opcode3 influences on range producing invalid opcodes
+      //need to create a table with extensive list of combinations vs instructions
+      //then each instruction can be documented
+
+      std::uint8_t opN_sel = 0;
+
+      for(std::uint8_t op_sel2 = 0; op_sel2 <=1; op_sel2++)
+      {
+         for(std::uint8_t op_sel1 = 0; op_sel1 <=1; op_sel1++)
+         {
+            for(std::uint8_t gr_sel = 0; gr_sel <=1; gr_sel++)
+            {
+               for(std::uint8_t opcode2 = 0; opcode2 <= 7; opcode2++)
+               {
+                  //for(std::uint8_t opN_sel = 0; opN_sel <=3; opN_sel++)
+                  //{
+                     for(std::uint8_t opcode3 = 0; opcode3 <= 7; opcode3++)
+                     {
+                        std::uint64_t instr = INSTR_0x20000000_0x28000000_GR_SEL_0_OP_SEL2_0_OP_SEL1_0_OPCODE2_0_MAD(4,0,0,0,op_sel2,0,0,0,0,0,opcode2,gr_sel,op_sel1,0,0,0,0,0,0,0,0,0,opcode3,opN_sel,0,0,0,0,0,0,0);
+                        std::cout << (std::int32_t)op_sel2 << "\t" << (std::int32_t)op_sel1 << "\t" << (std::int32_t)gr_sel << "\t" << (std::int32_t)opcode2 << "\t" << (std::int32_t)opcode3 << "\t";
+                        disasm_gxp_explicit(&opt, &header, instr);
+                     }
+                     std::cout << "===================" << std::endl;
+                  //}
+               }
+            }
+         }
+      }
+   }
+   */
+}
+
+void bruteforce_INSTR_0x20000000_0x28000000_MAD_IRII_items()
+{
+   //generic
+   /*
+   for(std::uint8_t opN_sel = 0; opN_sel <=3; opN_sel++)
+   {
+      std::uint8_t opcode3 = 2;
+      std::uint64_t instr = INSTR_0x20000000_0x28000000_MAD_IRII(4,0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,opcode3,opN_sel,0,0,0,1,1,1,0);
+      disasm_gxp_explicit(&opt, &header, instr);
+   }
+   */
+
+   //swz op 1
+   /*
+   for(std::uint8_t swz_alt_op1i = 0; swz_alt_op1i <= 3; swz_alt_op1i++)
+   {
+      for(std::uint8_t op1i_swz = 0; op1i_swz <= 3; op1i_swz++)
+      {
+         std::uint8_t opcode3 = 2;
+         std::uint8_t opN_sel = 1;
+         std::uint64_t instr = INSTR_0x20000000_0x28000000_MAD_IRII(4,0,0,0,0,0,0,0,0,0,0,0,0,swz_alt_op1i,op1i_swz,0,0,0,0,0,0,0,opcode3,opN_sel,0,0,0,1,1,1,0);
+         disasm_gxp_explicit(&opt, &header, instr);
+      }
+   }
+   */
+
+   //swz op N
+   /*
+   for(std::uint8_t swz_alt_opN = 0; swz_alt_opN <= 3; swz_alt_opN++)
+   {
+      for(std::uint8_t opN_swz = 0; opN_swz <= 3; opN_swz++)
+      {
+         std::uint8_t opcode3 = 2;
+         std::uint8_t opN_sel = 1;
+         std::uint64_t instr = INSTR_0x20000000_0x28000000_MAD_IRII(4,0,0,0,0,0,0,swz_alt_opN,opN_swz,0,0,0,0,0,0,0,0,0,0,0,0,0,opcode3,opN_sel,0,0,0,1,1,1,0);
+         disasm_gxp_explicit(&opt, &header, instr);
+      }
+   }
+   */
+
+   //swz op 2
+   /*
+   for(std::uint8_t swz_alt_op2i_2 = 0; swz_alt_op2i_2 <= 1; swz_alt_op2i_2++)
+   {
+      for(std::uint8_t swz_alt_op2i_x = 0; swz_alt_op2i_x <= 3; swz_alt_op2i_x++)
+      {
+         for(std::uint8_t op2i_swz = 0; op2i_swz <= 3; op2i_swz++)
+         {
+            std::uint8_t opcode3 = 2;
+            std::uint8_t opN_sel = 0;
+            std::uint64_t instr = INSTR_0x20000000_0x28000000_MAD_IRII(4,0,0,0,0,0,swz_alt_op2i_2,0,0,0,0,0,0,0,0,swz_alt_op2i_x,op2i_swz,0,0,0,0,0,opcode3,opN_sel,0,0,0,1,1,1,0);
+            disasm_gxp_explicit(&opt, &header, instr);
+         }
+      }
+   }
+   */
+}
