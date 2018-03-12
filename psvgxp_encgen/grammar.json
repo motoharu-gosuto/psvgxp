@@ -532,6 +532,128 @@
             "swz_en" : 1,
             "opN" : 7
          }
+      },
+      {
+         "name" : "INSTR_0x20000000_0x28000000_SUBFLR_IRI",
+         "high" : 
+         {
+            "opcode1" : 5,
+            "neg_op2i" : 1,
+            "predicate" : 2,
+            "unk4" : 1,
+            "op_sel2" : 1,
+            "data_format" : 1,
+            "swz_alt_op2i_2" : 1,
+            "swz_alt_opN" : 2,
+            "opN_swz" : 2,
+            "neg_opN" : 1,
+            "opcode2" : 3,
+            "gr_sel" : 1,
+            "op_sel1" : 1,
+            "swz_alt_op1i" : 2,
+            "op1i_swz" : 2,
+            "swz_alt_op2i_x" : 2,
+            "op2i_swz" : 2,
+            "unk2" : 2
+         },
+         "low" :
+         {
+            "optN" : 2,
+            "op0i" : 2,
+            "unk1" : 4,
+            "unk0" : 3,
+            "opcode3" : 3,
+            "opN_sel" : 2,
+            "unused0" : 2,
+            "op2i" : 2,
+            "op1i" : 2,
+            "swz_mask2" : 1,
+            "swz_mask1" : 1,
+            "swz_en" : 1,
+            "opN" : 7
+         }
+      },
+      {
+         "name" : "INSTR_0x20000000_0x28000000_EXP_IR",
+         "high" : 
+         {
+            "opcode1" : 5,
+            "neg_op2i" : 1,
+            "predicate" : 2,
+            "unk4" : 1,
+            "op_sel2" : 1,
+            "data_format" : 1,
+            "swz_alt_op2i_2" : 1,
+            "swz_alt_opN" : 2,
+            "opN_swz" : 2,
+            "neg_opN" : 1,
+            "opcode2" : 3,
+            "gr_sel" : 1,
+            "op_sel1" : 1,
+            "swz_alt_op1i" : 2,
+            "op1i_swz" : 2,
+            "swz_alt_op2i_x" : 2,
+            "op2i_swz" : 2,
+            "unk2" : 2
+         },
+         "low" :
+         {
+            "optN" : 2,
+            "op0i" : 2,
+            "unk1" : 4,
+            "unk0" : 3,
+            "opcode3" : 3,
+            "opN_sel" : 2,
+            "unused0" : 1,
+            "abs_opN" : 1,
+            "op2i" : 2,
+            "op1i" : 2,
+            "swz_mask2" : 1,
+            "swz_mask1" : 1,
+            "swz_en" : 1,
+            "opN" : 7
+         }
+      },
+      {
+         "name" : "INSTR_0x20000000_0x28000000_LOG_IR",
+         "high" : 
+         {
+            "opcode1" : 5,
+            "neg_op2i" : 1,
+            "predicate" : 2,
+            "unk4" : 1,
+            "op_sel2" : 1,
+            "data_format" : 1,
+            "swz_alt_op2i_2" : 1,
+            "swz_alt_opN" : 2,
+            "opN_swz" : 2,
+            "neg_opN" : 1,
+            "opcode2" : 3,
+            "gr_sel" : 1,
+            "op_sel1" : 1,
+            "swz_alt_op1i" : 2,
+            "op1i_swz" : 2,
+            "swz_alt_op2i_x" : 2,
+            "op2i_swz" : 2,
+            "unk2" : 2
+         },
+         "low" :
+         {
+            "optN" : 2,
+            "op0i" : 2,
+            "unk1" : 4,
+            "unk0" : 3,
+            "opcode3" : 3,
+            "opN_sel" : 2,
+            "unused0" : 1,
+            "abs_opN" : 1,
+            "op2i" : 2,
+            "op1i" : 2,
+            "swz_mask2" : 1,
+            "swz_mask1" : 1,
+            "swz_en" : 1,
+            "opN" : 7
+         }
       }
    ]
 }
