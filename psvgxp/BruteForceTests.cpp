@@ -827,3 +827,59 @@ void bruteforce_INSTR_0x20000000_0x28000000_MAD_IRII_items()
    }
    */
 }
+
+void bruteforce_INSTR_0x20000000_0x28000000_MAD_IRII_swizzles()
+{
+   //generic
+   
+   /*
+   for(std::uint8_t opN_sel = 0; opN_sel <=3; opN_sel++)
+   {
+      std::uint8_t opcode3 = 2;
+      std::uint64_t instr = INSTR_0x20000000_0x28000000_EXP_IR(4,0,0,0,1,0,0,0,0,0,3,0,0,0,0,0,0,0,0,0,0,0,opcode3,opN_sel,0,0,0,0,1,1,1,0);
+      disasm_gxp_explicit(&opt, &header, instr);
+   }
+   */
+
+   /*
+   for(std::uint8_t swz_alt_op1i = 0; swz_alt_op1i <= 3; swz_alt_op1i++)
+   {
+      for(std::uint8_t op1i_swz = 0; op1i_swz <= 3; op1i_swz++)
+      {
+         std::uint8_t opcode3 = 2;
+         std::uint8_t opN_sel = 1;
+         std::uint64_t instr = INSTR_0x20000000_0x28000000_EXP_IR(4,0,0,0,1,0,0,0,0,0,4,0,0,swz_alt_op1i,op1i_swz,0,0,0,0,0,0,0,opcode3,opN_sel,0,0,0,0,1,1,1,0);
+         disasm_gxp_explicit(&opt, &header, instr);
+      }
+   }
+   */
+
+   /*
+   for(std::uint8_t swz_alt_op2i_2 = 0; swz_alt_op2i_2 <= 1; swz_alt_op2i_2++)
+   {
+      for(std::uint8_t swz_alt_op2i_x = 0; swz_alt_op2i_x <= 3; swz_alt_op2i_x++)
+      {
+         for(std::uint8_t op2i_swz = 0; op2i_swz <= 3; op2i_swz++)
+         {
+            std::uint8_t opcode3 = 2;
+            std::uint8_t opN_sel = 2;
+            std::uint64_t instr = INSTR_0x20000000_0x28000000_EXP_IR(4,0,0,0,1,0,swz_alt_op2i_2,0,0,0,5,0,0,0,0,swz_alt_op2i_x,op2i_swz,0,0,0,0,0,opcode3,opN_sel,0,0,0,0,1,1,1,0);
+            disasm_gxp_explicit(&opt, &header, instr);
+         }
+      }
+   }
+   */
+
+   /*
+   for(std::uint8_t swz_alt_opN = 0; swz_alt_opN <= 3; swz_alt_opN++)
+   {
+      for(std::uint8_t opN_swz = 0; opN_swz <= 3; opN_swz++)
+      {
+         std::uint8_t opcode3 = 2;
+         std::uint8_t opN_sel = 0;
+         std::uint64_t instr = INSTR_0x20000000_0x28000000_EXP_IR(4,0,0,0,1,0,0,swz_alt_opN,opN_swz,0,5,0,0,0,0,0,0,0,0,0,0,0,opcode3,opN_sel,0,0,0,0,1,1,1,0);
+         disasm_gxp_explicit(&opt, &header, instr);
+      }
+   }
+   */
+}
