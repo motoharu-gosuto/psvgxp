@@ -2,6 +2,12 @@
 
 #include <cstdint>
 
+// Set this to false if you don't want vitasdk types to be redefined here
+// true by default
+#ifndef DEFINE_VITASDK_TYPES
+#   define DEFINE_VITASDK_TYPES true
+#endif
+
 #define GXP_MAGIC 0x00505847
 
 #pragma pack(push, 1)
@@ -65,6 +71,8 @@ typedef struct SceGxmProgram
    std::uint32_t maybe_parameters_offset2; //not sure
 } SceGxmProgram;
 
+#if DEFINE_VITASDK_TYPES
+
 //category - probably not everything is applicable to fragment / vector program
 
 typedef enum SceGxmParameterCategory 
@@ -91,6 +99,8 @@ typedef enum SceGxmParameterType
    SCE_GXM_PARAMETER_TYPE_S8 = 8,
    SCE_GXM_PARAMETER_TYPE_AGGREGATE = 9,
 } SceGxmParameterType;
+
+#endif  // #if DEFINE_VITASDK_TYPES
 
 typedef struct SceGxmProgramParameter // SceGxmProgramParameter
 {
