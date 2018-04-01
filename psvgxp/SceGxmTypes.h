@@ -2,6 +2,12 @@
 
 #include <cstdint>
 
+// Set this to false if you don't want vitasdk types to be redefined here
+// true by default
+#ifndef DEFINE_VITASDK_TYPES
+#   define DEFINE_VITASDK_TYPES true
+#endif
+
 #define GXP_MAGIC 0x00505847
 
 #pragma pack(push, 1)
@@ -60,14 +66,16 @@ typedef struct SceGxmProgram
    std::uint32_t unk_6C;
 
    std::uint32_t unk_70;
-   std::uint32_t maybe_literal_ofset; //not sure
+   std::uint32_t maybe_literal_offset; //not sure
    std::uint32_t unk_78;
    std::uint32_t maybe_parameters_offset2; //not sure
 } SceGxmProgram;
 
+#if DEFINE_VITASDK_TYPES
+
 //category - probably not everything is applicable to fragment / vector program
 
-typedef enum SceGxmParameterCategory 
+typedef enum SceGxmParameterCategory : std::uint16_t
 {
    SCE_GXM_PARAMETER_CATEGORY_ATTRIBUTE = 0, // - untested
    SCE_GXM_PARAMETER_CATEGORY_UNIFORM = 1, // - looks ok
@@ -78,7 +86,7 @@ typedef enum SceGxmParameterCategory
 
 //fully tested
 
-typedef enum SceGxmParameterType 
+typedef enum SceGxmParameterType : std::uint16_t
 {
    SCE_GXM_PARAMETER_TYPE_F32 = 0,
    SCE_GXM_PARAMETER_TYPE_F16 = 1,
@@ -92,24 +100,24 @@ typedef enum SceGxmParameterType
    SCE_GXM_PARAMETER_TYPE_AGGREGATE = 9,
 } SceGxmParameterType;
 
+#endif  // #if DEFINE_VITASDK_TYPES
+
 typedef struct SceGxmProgramParameter // SceGxmProgramParameter
 {
-   std::uint32_t name_offset; //offset from here to string name
-
-   std::uint32_t type;   //[unused(16):container_index(4):component_count(4):parameter_type(4):category(4)]
-                         //container_index - applicable for constants, not applicable for samplers (buffer, default, texture)
-                         //component_count -  applicable for constants, not applicable for samplers (select size like float2, float3, float3 ...)
-                         //parameter_type -  applicable for constants, not applicable for samplers (select type like float, half, fixed ...)  - SceGxmParameterType
-                         //category -  select constant or sampler - SceGxmParameterCategory
-
-   std::uint32_t array_size; //number of elements in array (applicable for constants, not applicable for samplers) - this confirmed to be unsigned integer
-   std::int32_t resource_index; //register number (applicable for constants, applicable for samplers) - this confirmed to be signed integer
-}SceGxmProgramParameter;
+   std::uint32_t name_offset; // offset from here to string name
+   std::uint16_t category : 4; // SceGxmParameterCategoryselect constant or sampler
+   std::uint16_t parameter_type : 4; // SceGxmParameterType - applicable for constants, not applicable for samplers (select type like float, half, fixed ...)
+   std::uint16_t component_count : 4; // applicable for constants, not applicable for samplers (select size like float2, float3, float3 ...)
+   std::uint16_t container_index : 4; // applicable for constants, not applicable for samplers (buffer, default, texture)
+   std::uint16_t unknown : 4;
+   std::uint32_t array_size; // number of elements in array (applicable for constants, not applicable for samplers) - this confirmed to be unsigned integer
+   std::int32_t resource_index; // register number (applicable for constants, applicable for samplers) - this confirmed to be signed integer
+} SceGxmProgramParameter;
 
 typedef struct symbol_t
 {
    std::uint64_t pos;
    SceGxmProgramParameter symbol;
-}symbol_t;
+} symbol_t;
 
 #pragma pack(pop)
