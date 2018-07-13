@@ -762,8 +762,31 @@
             "mask1_op0" : 1,
             "swz_en" : 1
          }
+      },
+      
+      {
+         "name" : "INSTR_0x38000000_0x40000000",
+         "high" : 
+         {
+            "opcode1" : 5,
+            "predicate" : 3,
+            "unk1" : 1,
+            "cond" : 1,
+            "unk2" : 6,
+            "opcode2" : 2,
+            "unk3" : 3,
+            "data_format" : 3,
+            "unk4" : 8
+         }
+         ,
+         "low" :
+         {
+            "byte1" : 8,
+            "byte2" : 8,
+            "byte3" : 8,
+            "byte4" : 8
+         }
       }
-
 
    ]
 }

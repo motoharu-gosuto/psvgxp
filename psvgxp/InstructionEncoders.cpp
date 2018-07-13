@@ -2279,3 +2279,69 @@ std::uint64_t INSTR_0x30000000_0x38000000(std::uint8_t opcode1, std::uint8_t pre
 
 //=====================
 
+std::uint64_t INSTR_0x38000000_0x40000000_HIGHER4(std::uint8_t opcode1, std::uint8_t predicate, std::uint8_t unk1, std::uint8_t cond, std::uint8_t unk2, std::uint8_t opcode2, std::uint8_t unk3, std::uint8_t data_format, std::uint8_t unk4)
+{
+   typedef NbitsToMask<8> unk4_t;
+   typedef NbitsToMask<3> data_format_t;
+   typedef NbitsToMask<3> unk3_t;
+   typedef NbitsToMask<2> opcode2_t;
+   typedef NbitsToMask<6> unk2_t;
+   typedef NbitsToMask<1> cond_t;
+   typedef NbitsToMask<1> unk1_t;
+   typedef NbitsToMask<3> predicate_t;
+   typedef NbitsToMask<5> opcode1_t;
+
+   std::uint8_t unk4_masked = unk4 & unk4_t::mask;
+   std::uint8_t data_format_masked = data_format & data_format_t::mask;
+   std::uint8_t unk3_masked = unk3 & unk3_t::mask;
+   std::uint8_t opcode2_masked = opcode2 & opcode2_t::mask;
+   std::uint8_t unk2_masked = unk2 & unk2_t::mask;
+   std::uint8_t cond_masked = cond & cond_t::mask;
+   std::uint8_t unk1_masked = unk1 & unk1_t::mask;
+   std::uint8_t predicate_masked = predicate & predicate_t::mask;
+   std::uint8_t opcode1_masked = opcode1 & opcode1_t::mask;
+
+   std::uint64_t unk4_shift = (std::uint64_t)unk4_masked << SumBits<>::result;
+   std::uint64_t data_format_shift = (std::uint64_t)data_format_masked << SumBits<unk4_t>::result;
+   std::uint64_t unk3_shift = (std::uint64_t)unk3_masked << SumBits<data_format_t, unk4_t>::result;
+   std::uint64_t opcode2_shift = (std::uint64_t)opcode2_masked << SumBits<unk3_t, data_format_t, unk4_t>::result;
+   std::uint64_t unk2_shift = (std::uint64_t)unk2_masked << SumBits<opcode2_t, unk3_t, data_format_t, unk4_t>::result;
+   std::uint64_t cond_shift = (std::uint64_t)cond_masked << SumBits<unk2_t, opcode2_t, unk3_t, data_format_t, unk4_t>::result;
+   std::uint64_t unk1_shift = (std::uint64_t)unk1_masked << SumBits<cond_t, unk2_t, opcode2_t, unk3_t, data_format_t, unk4_t>::result;
+   std::uint64_t predicate_shift = (std::uint64_t)predicate_masked << SumBits<unk1_t, cond_t, unk2_t, opcode2_t, unk3_t, data_format_t, unk4_t>::result;
+   std::uint64_t opcode1_shift = (std::uint64_t)opcode1_masked << SumBits<predicate_t, unk1_t, cond_t, unk2_t, opcode2_t, unk3_t, data_format_t, unk4_t>::result;
+
+   return opcode1_shift | predicate_shift | unk1_shift | cond_shift | unk2_shift | opcode2_shift | unk3_shift | data_format_shift | unk4_shift;
+}
+
+std::uint64_t INSTR_0x38000000_0x40000000_LOWER4(std::uint8_t byte1, std::uint8_t byte2, std::uint8_t byte3, std::uint8_t byte4)
+{
+   typedef NbitsToMask<8> byte4_t;
+   typedef NbitsToMask<8> byte3_t;
+   typedef NbitsToMask<8> byte2_t;
+   typedef NbitsToMask<8> byte1_t;
+
+   std::uint8_t byte4_masked = byte4 & byte4_t::mask;
+   std::uint8_t byte3_masked = byte3 & byte3_t::mask;
+   std::uint8_t byte2_masked = byte2 & byte2_t::mask;
+   std::uint8_t byte1_masked = byte1 & byte1_t::mask;
+
+   std::uint64_t byte4_shift = (std::uint64_t)byte4_masked << SumBits<>::result;
+   std::uint64_t byte3_shift = (std::uint64_t)byte3_masked << SumBits<byte4_t>::result;
+   std::uint64_t byte2_shift = (std::uint64_t)byte2_masked << SumBits<byte3_t, byte4_t>::result;
+   std::uint64_t byte1_shift = (std::uint64_t)byte1_masked << SumBits<byte2_t, byte3_t, byte4_t>::result;
+
+   return byte1_shift | byte2_shift | byte3_shift | byte4_shift;
+}
+
+std::uint64_t INSTR_0x38000000_0x40000000(std::uint8_t opcode1, std::uint8_t predicate, std::uint8_t unk1, std::uint8_t cond, std::uint8_t unk2, std::uint8_t opcode2, std::uint8_t unk3, std::uint8_t data_format, std::uint8_t unk4, std::uint8_t byte1, std::uint8_t byte2, std::uint8_t byte3, std::uint8_t byte4)
+{
+   std::uint64_t hi = INSTR_0x38000000_0x40000000_HIGHER4(opcode1, predicate, unk1, cond, unk2, opcode2, unk3, data_format, unk4);
+
+   std::uint64_t lo = INSTR_0x38000000_0x40000000_LOWER4(byte1, byte2, byte3, byte4);
+
+   return (hi << 32) | lo;
+}
+
+//=====================
+
