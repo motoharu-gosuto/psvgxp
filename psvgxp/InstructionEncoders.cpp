@@ -1934,7 +1934,7 @@ std::uint64_t INSTR_0x20000000_0x28000000_LOG_IR(std::uint8_t opcode1, std::uint
 
 //=====================
 
-std::uint64_t INSTR_0x28000000_0x30000000_HIGHER4(std::uint8_t opcode1, std::uint8_t neg_op2i, std::uint8_t predicate, std::uint8_t unk4, std::uint8_t mask3, std::uint8_t data_format, std::uint8_t swz_alt_op2i_2, std::uint8_t swz_alt_opN, std::uint8_t opN_swz, std::uint8_t neg_opN, std::uint8_t opcode2, std::uint8_t gr_sel, std::uint8_t op_sel1, std::uint8_t swz_alt_op1i, std::uint8_t op1i_swz, std::uint8_t swz_alt_op2i_x, std::uint8_t op2i_swz, std::uint8_t opt0)
+std::uint64_t INSTR_0x20000000_0x28000000_MAD_RRII_EXP1_HIGHER4(std::uint8_t opcode1, std::uint8_t neg_op2i, std::uint8_t predicate, std::uint8_t unk4, std::uint8_t op_sel2, std::uint8_t data_format, std::uint8_t swz_alt_op2i_2, std::uint8_t swz_alt_opN, std::uint8_t opN_swz, std::uint8_t neg_opN, std::uint8_t opcode2, std::uint8_t gr_sel, std::uint8_t op_sel1, std::uint8_t swz_alt_op1i, std::uint8_t op1i_swz, std::uint8_t swz_alt_op2i_x, std::uint8_t op2i_swz, std::uint8_t opt0)
 {
    typedef NbitsToMask<2> opt0_t;
    typedef NbitsToMask<2> op2i_swz_t;
@@ -1949,7 +1949,7 @@ std::uint64_t INSTR_0x28000000_0x30000000_HIGHER4(std::uint8_t opcode1, std::uin
    typedef NbitsToMask<2> swz_alt_opN_t;
    typedef NbitsToMask<1> swz_alt_op2i_2_t;
    typedef NbitsToMask<1> data_format_t;
-   typedef NbitsToMask<1> mask3_t;
+   typedef NbitsToMask<1> op_sel2_t;
    typedef NbitsToMask<1> unk4_t;
    typedef NbitsToMask<2> predicate_t;
    typedef NbitsToMask<1> neg_op2i_t;
@@ -1968,7 +1968,7 @@ std::uint64_t INSTR_0x28000000_0x30000000_HIGHER4(std::uint8_t opcode1, std::uin
    std::uint8_t swz_alt_opN_masked = swz_alt_opN & swz_alt_opN_t::mask;
    std::uint8_t swz_alt_op2i_2_masked = swz_alt_op2i_2 & swz_alt_op2i_2_t::mask;
    std::uint8_t data_format_masked = data_format & data_format_t::mask;
-   std::uint8_t mask3_masked = mask3 & mask3_t::mask;
+   std::uint8_t op_sel2_masked = op_sel2 & op_sel2_t::mask;
    std::uint8_t unk4_masked = unk4 & unk4_t::mask;
    std::uint8_t predicate_masked = predicate & predicate_t::mask;
    std::uint8_t neg_op2i_masked = neg_op2i & neg_op2i_t::mask;
@@ -1987,13 +1987,130 @@ std::uint64_t INSTR_0x28000000_0x30000000_HIGHER4(std::uint8_t opcode1, std::uin
    std::uint64_t swz_alt_opN_shift = (std::uint64_t)swz_alt_opN_masked << SumBits<opN_swz_t, neg_opN_t, opcode2_t, gr_sel_t, op_sel1_t, swz_alt_op1i_t, op1i_swz_t, swz_alt_op2i_x_t, op2i_swz_t, opt0_t>::result;
    std::uint64_t swz_alt_op2i_2_shift = (std::uint64_t)swz_alt_op2i_2_masked << SumBits<swz_alt_opN_t, opN_swz_t, neg_opN_t, opcode2_t, gr_sel_t, op_sel1_t, swz_alt_op1i_t, op1i_swz_t, swz_alt_op2i_x_t, op2i_swz_t, opt0_t>::result;
    std::uint64_t data_format_shift = (std::uint64_t)data_format_masked << SumBits<swz_alt_op2i_2_t, swz_alt_opN_t, opN_swz_t, neg_opN_t, opcode2_t, gr_sel_t, op_sel1_t, swz_alt_op1i_t, op1i_swz_t, swz_alt_op2i_x_t, op2i_swz_t, opt0_t>::result;
-   std::uint64_t mask3_shift = (std::uint64_t)mask3_masked << SumBits<data_format_t, swz_alt_op2i_2_t, swz_alt_opN_t, opN_swz_t, neg_opN_t, opcode2_t, gr_sel_t, op_sel1_t, swz_alt_op1i_t, op1i_swz_t, swz_alt_op2i_x_t, op2i_swz_t, opt0_t>::result;
-   std::uint64_t unk4_shift = (std::uint64_t)unk4_masked << SumBits<mask3_t, data_format_t, swz_alt_op2i_2_t, swz_alt_opN_t, opN_swz_t, neg_opN_t, opcode2_t, gr_sel_t, op_sel1_t, swz_alt_op1i_t, op1i_swz_t, swz_alt_op2i_x_t, op2i_swz_t, opt0_t>::result;
-   std::uint64_t predicate_shift = (std::uint64_t)predicate_masked << SumBits<unk4_t, mask3_t, data_format_t, swz_alt_op2i_2_t, swz_alt_opN_t, opN_swz_t, neg_opN_t, opcode2_t, gr_sel_t, op_sel1_t, swz_alt_op1i_t, op1i_swz_t, swz_alt_op2i_x_t, op2i_swz_t, opt0_t>::result;
-   std::uint64_t neg_op2i_shift = (std::uint64_t)neg_op2i_masked << SumBits<predicate_t, unk4_t, mask3_t, data_format_t, swz_alt_op2i_2_t, swz_alt_opN_t, opN_swz_t, neg_opN_t, opcode2_t, gr_sel_t, op_sel1_t, swz_alt_op1i_t, op1i_swz_t, swz_alt_op2i_x_t, op2i_swz_t, opt0_t>::result;
-   std::uint64_t opcode1_shift = (std::uint64_t)opcode1_masked << SumBits<neg_op2i_t, predicate_t, unk4_t, mask3_t, data_format_t, swz_alt_op2i_2_t, swz_alt_opN_t, opN_swz_t, neg_opN_t, opcode2_t, gr_sel_t, op_sel1_t, swz_alt_op1i_t, op1i_swz_t, swz_alt_op2i_x_t, op2i_swz_t, opt0_t>::result;
+   std::uint64_t op_sel2_shift = (std::uint64_t)op_sel2_masked << SumBits<data_format_t, swz_alt_op2i_2_t, swz_alt_opN_t, opN_swz_t, neg_opN_t, opcode2_t, gr_sel_t, op_sel1_t, swz_alt_op1i_t, op1i_swz_t, swz_alt_op2i_x_t, op2i_swz_t, opt0_t>::result;
+   std::uint64_t unk4_shift = (std::uint64_t)unk4_masked << SumBits<op_sel2_t, data_format_t, swz_alt_op2i_2_t, swz_alt_opN_t, opN_swz_t, neg_opN_t, opcode2_t, gr_sel_t, op_sel1_t, swz_alt_op1i_t, op1i_swz_t, swz_alt_op2i_x_t, op2i_swz_t, opt0_t>::result;
+   std::uint64_t predicate_shift = (std::uint64_t)predicate_masked << SumBits<unk4_t, op_sel2_t, data_format_t, swz_alt_op2i_2_t, swz_alt_opN_t, opN_swz_t, neg_opN_t, opcode2_t, gr_sel_t, op_sel1_t, swz_alt_op1i_t, op1i_swz_t, swz_alt_op2i_x_t, op2i_swz_t, opt0_t>::result;
+   std::uint64_t neg_op2i_shift = (std::uint64_t)neg_op2i_masked << SumBits<predicate_t, unk4_t, op_sel2_t, data_format_t, swz_alt_op2i_2_t, swz_alt_opN_t, opN_swz_t, neg_opN_t, opcode2_t, gr_sel_t, op_sel1_t, swz_alt_op1i_t, op1i_swz_t, swz_alt_op2i_x_t, op2i_swz_t, opt0_t>::result;
+   std::uint64_t opcode1_shift = (std::uint64_t)opcode1_masked << SumBits<neg_op2i_t, predicate_t, unk4_t, op_sel2_t, data_format_t, swz_alt_op2i_2_t, swz_alt_opN_t, opN_swz_t, neg_opN_t, opcode2_t, gr_sel_t, op_sel1_t, swz_alt_op1i_t, op1i_swz_t, swz_alt_op2i_x_t, op2i_swz_t, opt0_t>::result;
 
-   return opcode1_shift | neg_op2i_shift | predicate_shift | unk4_shift | mask3_shift | data_format_shift | swz_alt_op2i_2_shift | swz_alt_opN_shift | opN_swz_shift | neg_opN_shift | opcode2_shift | gr_sel_shift | op_sel1_shift | swz_alt_op1i_shift | op1i_swz_shift | swz_alt_op2i_x_shift | op2i_swz_shift | opt0_shift;
+   return opcode1_shift | neg_op2i_shift | predicate_shift | unk4_shift | op_sel2_shift | data_format_shift | swz_alt_op2i_2_shift | swz_alt_opN_shift | opN_swz_shift | neg_opN_shift | opcode2_shift | gr_sel_shift | op_sel1_shift | swz_alt_op1i_shift | op1i_swz_shift | swz_alt_op2i_x_shift | op2i_swz_shift | opt0_shift;
+}
+
+std::uint64_t INSTR_0x20000000_0x28000000_MAD_RRII_EXP1_LOWER4(std::uint8_t optN, std::uint8_t op0i, std::uint8_t op0, std::uint8_t opcode3, std::uint8_t opN_sel, std::uint8_t op3i, std::uint8_t op2i, std::uint8_t op1i, std::uint8_t swz_mask2, std::uint8_t swz_mask1, std::uint8_t swz_en, std::uint8_t opN)
+{
+   typedef NbitsToMask<7> opN_t;
+   typedef NbitsToMask<1> swz_en_t;
+   typedef NbitsToMask<1> swz_mask1_t;
+   typedef NbitsToMask<1> swz_mask2_t;
+   typedef NbitsToMask<2> op1i_t;
+   typedef NbitsToMask<2> op2i_t;
+   typedef NbitsToMask<2> op3i_t;
+   typedef NbitsToMask<2> opN_sel_t;
+   typedef NbitsToMask<3> opcode3_t;
+   typedef NbitsToMask<7> op0_t;
+   typedef NbitsToMask<2> op0i_t;
+   typedef NbitsToMask<2> optN_t;
+
+   std::uint8_t opN_masked = opN & opN_t::mask;
+   std::uint8_t swz_en_masked = swz_en & swz_en_t::mask;
+   std::uint8_t swz_mask1_masked = swz_mask1 & swz_mask1_t::mask;
+   std::uint8_t swz_mask2_masked = swz_mask2 & swz_mask2_t::mask;
+   std::uint8_t op1i_masked = op1i & op1i_t::mask;
+   std::uint8_t op2i_masked = op2i & op2i_t::mask;
+   std::uint8_t op3i_masked = op3i & op3i_t::mask;
+   std::uint8_t opN_sel_masked = opN_sel & opN_sel_t::mask;
+   std::uint8_t opcode3_masked = opcode3 & opcode3_t::mask;
+   std::uint8_t op0_masked = op0 & op0_t::mask;
+   std::uint8_t op0i_masked = op0i & op0i_t::mask;
+   std::uint8_t optN_masked = optN & optN_t::mask;
+
+   std::uint64_t opN_shift = (std::uint64_t)opN_masked << SumBits<>::result;
+   std::uint64_t swz_en_shift = (std::uint64_t)swz_en_masked << SumBits<opN_t>::result;
+   std::uint64_t swz_mask1_shift = (std::uint64_t)swz_mask1_masked << SumBits<swz_en_t, opN_t>::result;
+   std::uint64_t swz_mask2_shift = (std::uint64_t)swz_mask2_masked << SumBits<swz_mask1_t, swz_en_t, opN_t>::result;
+   std::uint64_t op1i_shift = (std::uint64_t)op1i_masked << SumBits<swz_mask2_t, swz_mask1_t, swz_en_t, opN_t>::result;
+   std::uint64_t op2i_shift = (std::uint64_t)op2i_masked << SumBits<op1i_t, swz_mask2_t, swz_mask1_t, swz_en_t, opN_t>::result;
+   std::uint64_t op3i_shift = (std::uint64_t)op3i_masked << SumBits<op2i_t, op1i_t, swz_mask2_t, swz_mask1_t, swz_en_t, opN_t>::result;
+   std::uint64_t opN_sel_shift = (std::uint64_t)opN_sel_masked << SumBits<op3i_t, op2i_t, op1i_t, swz_mask2_t, swz_mask1_t, swz_en_t, opN_t>::result;
+   std::uint64_t opcode3_shift = (std::uint64_t)opcode3_masked << SumBits<opN_sel_t, op3i_t, op2i_t, op1i_t, swz_mask2_t, swz_mask1_t, swz_en_t, opN_t>::result;
+   std::uint64_t op0_shift = (std::uint64_t)op0_masked << SumBits<opcode3_t, opN_sel_t, op3i_t, op2i_t, op1i_t, swz_mask2_t, swz_mask1_t, swz_en_t, opN_t>::result;
+   std::uint64_t op0i_shift = (std::uint64_t)op0i_masked << SumBits<op0_t, opcode3_t, opN_sel_t, op3i_t, op2i_t, op1i_t, swz_mask2_t, swz_mask1_t, swz_en_t, opN_t>::result;
+   std::uint64_t optN_shift = (std::uint64_t)optN_masked << SumBits<op0i_t, op0_t, opcode3_t, opN_sel_t, op3i_t, op2i_t, op1i_t, swz_mask2_t, swz_mask1_t, swz_en_t, opN_t>::result;
+
+   return optN_shift | op0i_shift | op0_shift | opcode3_shift | opN_sel_shift | op3i_shift | op2i_shift | op1i_shift | swz_mask2_shift | swz_mask1_shift | swz_en_shift | opN_shift;
+}
+
+std::uint64_t INSTR_0x20000000_0x28000000_MAD_RRII_EXP1(std::uint8_t opcode1, std::uint8_t neg_op2i, std::uint8_t predicate, std::uint8_t unk4, std::uint8_t op_sel2, std::uint8_t data_format, std::uint8_t swz_alt_op2i_2, std::uint8_t swz_alt_opN, std::uint8_t opN_swz, std::uint8_t neg_opN, std::uint8_t opcode2, std::uint8_t gr_sel, std::uint8_t op_sel1, std::uint8_t swz_alt_op1i, std::uint8_t op1i_swz, std::uint8_t swz_alt_op2i_x, std::uint8_t op2i_swz, std::uint8_t opt0, std::uint8_t optN, std::uint8_t op0i, std::uint8_t op0, std::uint8_t opcode3, std::uint8_t opN_sel, std::uint8_t op3i, std::uint8_t op2i, std::uint8_t op1i, std::uint8_t swz_mask2, std::uint8_t swz_mask1, std::uint8_t swz_en, std::uint8_t opN)
+{
+   std::uint64_t hi = INSTR_0x20000000_0x28000000_MAD_RRII_EXP1_HIGHER4(opcode1, neg_op2i, predicate, unk4, op_sel2, data_format, swz_alt_op2i_2, swz_alt_opN, opN_swz, neg_opN, opcode2, gr_sel, op_sel1, swz_alt_op1i, op1i_swz, swz_alt_op2i_x, op2i_swz, opt0);
+
+   std::uint64_t lo = INSTR_0x20000000_0x28000000_MAD_RRII_EXP1_LOWER4(optN, op0i, op0, opcode3, opN_sel, op3i, op2i, op1i, swz_mask2, swz_mask1, swz_en, opN);
+
+   return (hi << 32) | lo;
+}
+
+//=====================
+
+std::uint64_t INSTR_0x28000000_0x30000000_HIGHER4(std::uint8_t opcode1, std::uint8_t neg_op2i, std::uint8_t predicate, std::uint8_t unk1, std::uint8_t mask3, std::uint8_t data_format, std::uint8_t swz_alt_op2i_2, std::uint8_t swz_alt_opN, std::uint8_t opN_swz, std::uint8_t neg_opN, std::uint8_t opcode2, std::uint8_t gr_sel, std::uint8_t op_sel1, std::uint8_t swz_alt_op1i, std::uint8_t op1i_swz, std::uint8_t swz_alt_op2i_x, std::uint8_t op2i_swz, std::uint8_t opt0)
+{
+   typedef NbitsToMask<2> opt0_t;
+   typedef NbitsToMask<2> op2i_swz_t;
+   typedef NbitsToMask<2> swz_alt_op2i_x_t;
+   typedef NbitsToMask<2> op1i_swz_t;
+   typedef NbitsToMask<2> swz_alt_op1i_t;
+   typedef NbitsToMask<1> op_sel1_t;
+   typedef NbitsToMask<1> gr_sel_t;
+   typedef NbitsToMask<3> opcode2_t;
+   typedef NbitsToMask<1> neg_opN_t;
+   typedef NbitsToMask<2> opN_swz_t;
+   typedef NbitsToMask<2> swz_alt_opN_t;
+   typedef NbitsToMask<1> swz_alt_op2i_2_t;
+   typedef NbitsToMask<1> data_format_t;
+   typedef NbitsToMask<1> mask3_t;
+   typedef NbitsToMask<1> unk1_t;
+   typedef NbitsToMask<2> predicate_t;
+   typedef NbitsToMask<1> neg_op2i_t;
+   typedef NbitsToMask<5> opcode1_t;
+
+   std::uint8_t opt0_masked = opt0 & opt0_t::mask;
+   std::uint8_t op2i_swz_masked = op2i_swz & op2i_swz_t::mask;
+   std::uint8_t swz_alt_op2i_x_masked = swz_alt_op2i_x & swz_alt_op2i_x_t::mask;
+   std::uint8_t op1i_swz_masked = op1i_swz & op1i_swz_t::mask;
+   std::uint8_t swz_alt_op1i_masked = swz_alt_op1i & swz_alt_op1i_t::mask;
+   std::uint8_t op_sel1_masked = op_sel1 & op_sel1_t::mask;
+   std::uint8_t gr_sel_masked = gr_sel & gr_sel_t::mask;
+   std::uint8_t opcode2_masked = opcode2 & opcode2_t::mask;
+   std::uint8_t neg_opN_masked = neg_opN & neg_opN_t::mask;
+   std::uint8_t opN_swz_masked = opN_swz & opN_swz_t::mask;
+   std::uint8_t swz_alt_opN_masked = swz_alt_opN & swz_alt_opN_t::mask;
+   std::uint8_t swz_alt_op2i_2_masked = swz_alt_op2i_2 & swz_alt_op2i_2_t::mask;
+   std::uint8_t data_format_masked = data_format & data_format_t::mask;
+   std::uint8_t mask3_masked = mask3 & mask3_t::mask;
+   std::uint8_t unk1_masked = unk1 & unk1_t::mask;
+   std::uint8_t predicate_masked = predicate & predicate_t::mask;
+   std::uint8_t neg_op2i_masked = neg_op2i & neg_op2i_t::mask;
+   std::uint8_t opcode1_masked = opcode1 & opcode1_t::mask;
+
+   std::uint64_t opt0_shift = (std::uint64_t)opt0_masked << SumBits<>::result;
+   std::uint64_t op2i_swz_shift = (std::uint64_t)op2i_swz_masked << SumBits<opt0_t>::result;
+   std::uint64_t swz_alt_op2i_x_shift = (std::uint64_t)swz_alt_op2i_x_masked << SumBits<op2i_swz_t, opt0_t>::result;
+   std::uint64_t op1i_swz_shift = (std::uint64_t)op1i_swz_masked << SumBits<swz_alt_op2i_x_t, op2i_swz_t, opt0_t>::result;
+   std::uint64_t swz_alt_op1i_shift = (std::uint64_t)swz_alt_op1i_masked << SumBits<op1i_swz_t, swz_alt_op2i_x_t, op2i_swz_t, opt0_t>::result;
+   std::uint64_t op_sel1_shift = (std::uint64_t)op_sel1_masked << SumBits<swz_alt_op1i_t, op1i_swz_t, swz_alt_op2i_x_t, op2i_swz_t, opt0_t>::result;
+   std::uint64_t gr_sel_shift = (std::uint64_t)gr_sel_masked << SumBits<op_sel1_t, swz_alt_op1i_t, op1i_swz_t, swz_alt_op2i_x_t, op2i_swz_t, opt0_t>::result;
+   std::uint64_t opcode2_shift = (std::uint64_t)opcode2_masked << SumBits<gr_sel_t, op_sel1_t, swz_alt_op1i_t, op1i_swz_t, swz_alt_op2i_x_t, op2i_swz_t, opt0_t>::result;
+   std::uint64_t neg_opN_shift = (std::uint64_t)neg_opN_masked << SumBits<opcode2_t, gr_sel_t, op_sel1_t, swz_alt_op1i_t, op1i_swz_t, swz_alt_op2i_x_t, op2i_swz_t, opt0_t>::result;
+   std::uint64_t opN_swz_shift = (std::uint64_t)opN_swz_masked << SumBits<neg_opN_t, opcode2_t, gr_sel_t, op_sel1_t, swz_alt_op1i_t, op1i_swz_t, swz_alt_op2i_x_t, op2i_swz_t, opt0_t>::result;
+   std::uint64_t swz_alt_opN_shift = (std::uint64_t)swz_alt_opN_masked << SumBits<opN_swz_t, neg_opN_t, opcode2_t, gr_sel_t, op_sel1_t, swz_alt_op1i_t, op1i_swz_t, swz_alt_op2i_x_t, op2i_swz_t, opt0_t>::result;
+   std::uint64_t swz_alt_op2i_2_shift = (std::uint64_t)swz_alt_op2i_2_masked << SumBits<swz_alt_opN_t, opN_swz_t, neg_opN_t, opcode2_t, gr_sel_t, op_sel1_t, swz_alt_op1i_t, op1i_swz_t, swz_alt_op2i_x_t, op2i_swz_t, opt0_t>::result;
+   std::uint64_t data_format_shift = (std::uint64_t)data_format_masked << SumBits<swz_alt_op2i_2_t, swz_alt_opN_t, opN_swz_t, neg_opN_t, opcode2_t, gr_sel_t, op_sel1_t, swz_alt_op1i_t, op1i_swz_t, swz_alt_op2i_x_t, op2i_swz_t, opt0_t>::result;
+   std::uint64_t mask3_shift = (std::uint64_t)mask3_masked << SumBits<data_format_t, swz_alt_op2i_2_t, swz_alt_opN_t, opN_swz_t, neg_opN_t, opcode2_t, gr_sel_t, op_sel1_t, swz_alt_op1i_t, op1i_swz_t, swz_alt_op2i_x_t, op2i_swz_t, opt0_t>::result;
+   std::uint64_t unk1_shift = (std::uint64_t)unk1_masked << SumBits<mask3_t, data_format_t, swz_alt_op2i_2_t, swz_alt_opN_t, opN_swz_t, neg_opN_t, opcode2_t, gr_sel_t, op_sel1_t, swz_alt_op1i_t, op1i_swz_t, swz_alt_op2i_x_t, op2i_swz_t, opt0_t>::result;
+   std::uint64_t predicate_shift = (std::uint64_t)predicate_masked << SumBits<unk1_t, mask3_t, data_format_t, swz_alt_op2i_2_t, swz_alt_opN_t, opN_swz_t, neg_opN_t, opcode2_t, gr_sel_t, op_sel1_t, swz_alt_op1i_t, op1i_swz_t, swz_alt_op2i_x_t, op2i_swz_t, opt0_t>::result;
+   std::uint64_t neg_op2i_shift = (std::uint64_t)neg_op2i_masked << SumBits<predicate_t, unk1_t, mask3_t, data_format_t, swz_alt_op2i_2_t, swz_alt_opN_t, opN_swz_t, neg_opN_t, opcode2_t, gr_sel_t, op_sel1_t, swz_alt_op1i_t, op1i_swz_t, swz_alt_op2i_x_t, op2i_swz_t, opt0_t>::result;
+   std::uint64_t opcode1_shift = (std::uint64_t)opcode1_masked << SumBits<neg_op2i_t, predicate_t, unk1_t, mask3_t, data_format_t, swz_alt_op2i_2_t, swz_alt_opN_t, opN_swz_t, neg_opN_t, opcode2_t, gr_sel_t, op_sel1_t, swz_alt_op1i_t, op1i_swz_t, swz_alt_op2i_x_t, op2i_swz_t, opt0_t>::result;
+
+   return opcode1_shift | neg_op2i_shift | predicate_shift | unk1_shift | mask3_shift | data_format_shift | swz_alt_op2i_2_shift | swz_alt_opN_shift | opN_swz_shift | neg_opN_shift | opcode2_shift | gr_sel_shift | op_sel1_shift | swz_alt_op1i_shift | op1i_swz_shift | swz_alt_op2i_x_shift | op2i_swz_shift | opt0_shift;
 }
 
 std::uint64_t INSTR_0x28000000_0x30000000_LOWER4(std::uint8_t optN, std::uint8_t op0i, std::uint8_t op0, std::uint8_t opcode3, std::uint8_t opN_sel, std::uint8_t op3i, std::uint8_t op2i, std::uint8_t op1i, std::uint8_t swz_mask2, std::uint8_t swz_mask1, std::uint8_t swz_en, std::uint8_t opN)
@@ -2040,11 +2157,122 @@ std::uint64_t INSTR_0x28000000_0x30000000_LOWER4(std::uint8_t optN, std::uint8_t
    return optN_shift | op0i_shift | op0_shift | opcode3_shift | opN_sel_shift | op3i_shift | op2i_shift | op1i_shift | swz_mask2_shift | swz_mask1_shift | swz_en_shift | opN_shift;
 }
 
-std::uint64_t INSTR_0x28000000_0x30000000(std::uint8_t opcode1, std::uint8_t neg_op2i, std::uint8_t predicate, std::uint8_t unk4, std::uint8_t mask3, std::uint8_t data_format, std::uint8_t swz_alt_op2i_2, std::uint8_t swz_alt_opN, std::uint8_t opN_swz, std::uint8_t neg_opN, std::uint8_t opcode2, std::uint8_t gr_sel, std::uint8_t op_sel1, std::uint8_t swz_alt_op1i, std::uint8_t op1i_swz, std::uint8_t swz_alt_op2i_x, std::uint8_t op2i_swz, std::uint8_t opt0, std::uint8_t optN, std::uint8_t op0i, std::uint8_t op0, std::uint8_t opcode3, std::uint8_t opN_sel, std::uint8_t op3i, std::uint8_t op2i, std::uint8_t op1i, std::uint8_t swz_mask2, std::uint8_t swz_mask1, std::uint8_t swz_en, std::uint8_t opN)
+std::uint64_t INSTR_0x28000000_0x30000000(std::uint8_t opcode1, std::uint8_t neg_op2i, std::uint8_t predicate, std::uint8_t unk1, std::uint8_t mask3, std::uint8_t data_format, std::uint8_t swz_alt_op2i_2, std::uint8_t swz_alt_opN, std::uint8_t opN_swz, std::uint8_t neg_opN, std::uint8_t opcode2, std::uint8_t gr_sel, std::uint8_t op_sel1, std::uint8_t swz_alt_op1i, std::uint8_t op1i_swz, std::uint8_t swz_alt_op2i_x, std::uint8_t op2i_swz, std::uint8_t opt0, std::uint8_t optN, std::uint8_t op0i, std::uint8_t op0, std::uint8_t opcode3, std::uint8_t opN_sel, std::uint8_t op3i, std::uint8_t op2i, std::uint8_t op1i, std::uint8_t swz_mask2, std::uint8_t swz_mask1, std::uint8_t swz_en, std::uint8_t opN)
 {
-   std::uint64_t hi = INSTR_0x28000000_0x30000000_HIGHER4(opcode1, neg_op2i, predicate, unk4, mask3, data_format, swz_alt_op2i_2, swz_alt_opN, opN_swz, neg_opN, opcode2, gr_sel, op_sel1, swz_alt_op1i, op1i_swz, swz_alt_op2i_x, op2i_swz, opt0);
+   std::uint64_t hi = INSTR_0x28000000_0x30000000_HIGHER4(opcode1, neg_op2i, predicate, unk1, mask3, data_format, swz_alt_op2i_2, swz_alt_opN, opN_swz, neg_opN, opcode2, gr_sel, op_sel1, swz_alt_op1i, op1i_swz, swz_alt_op2i_x, op2i_swz, opt0);
 
    std::uint64_t lo = INSTR_0x28000000_0x30000000_LOWER4(optN, op0i, op0, opcode3, opN_sel, op3i, op2i, op1i, swz_mask2, swz_mask1, swz_en, opN);
+
+   return (hi << 32) | lo;
+}
+
+//=====================
+
+std::uint64_t INSTR_0x30000000_0x38000000_HIGHER4(std::uint8_t opcode1, std::uint8_t predicate, std::uint8_t unk9, std::uint8_t data_format, std::uint8_t unk8, std::uint8_t alt_opt0, std::uint8_t unk7, std::uint8_t alt_opt1, std::uint8_t unk6, std::uint8_t unk5, std::uint8_t opcode2, std::uint8_t modifier1, std::uint8_t modifier0, std::uint8_t abs_op1, std::uint8_t neg_op1, std::uint8_t mask2_op1, std::uint8_t mask1_op1, std::uint8_t unk4, std::uint8_t opt0)
+{
+   typedef NbitsToMask<2> opt0_t;
+   typedef NbitsToMask<1> unk4_t;
+   typedef NbitsToMask<1> mask1_op1_t;
+   typedef NbitsToMask<1> mask2_op1_t;
+   typedef NbitsToMask<1> neg_op1_t;
+   typedef NbitsToMask<1> abs_op1_t;
+   typedef NbitsToMask<1> modifier0_t;
+   typedef NbitsToMask<1> modifier1_t;
+   typedef NbitsToMask<2> opcode2_t;
+   typedef NbitsToMask<5> unk5_t;
+   typedef NbitsToMask<1> unk6_t;
+   typedef NbitsToMask<1> alt_opt1_t;
+   typedef NbitsToMask<1> unk7_t;
+   typedef NbitsToMask<1> alt_opt0_t;
+   typedef NbitsToMask<1> unk8_t;
+   typedef NbitsToMask<2> data_format_t;
+   typedef NbitsToMask<1> unk9_t;
+   typedef NbitsToMask<3> predicate_t;
+   typedef NbitsToMask<5> opcode1_t;
+
+   std::uint8_t opt0_masked = opt0 & opt0_t::mask;
+   std::uint8_t unk4_masked = unk4 & unk4_t::mask;
+   std::uint8_t mask1_op1_masked = mask1_op1 & mask1_op1_t::mask;
+   std::uint8_t mask2_op1_masked = mask2_op1 & mask2_op1_t::mask;
+   std::uint8_t neg_op1_masked = neg_op1 & neg_op1_t::mask;
+   std::uint8_t abs_op1_masked = abs_op1 & abs_op1_t::mask;
+   std::uint8_t modifier0_masked = modifier0 & modifier0_t::mask;
+   std::uint8_t modifier1_masked = modifier1 & modifier1_t::mask;
+   std::uint8_t opcode2_masked = opcode2 & opcode2_t::mask;
+   std::uint8_t unk5_masked = unk5 & unk5_t::mask;
+   std::uint8_t unk6_masked = unk6 & unk6_t::mask;
+   std::uint8_t alt_opt1_masked = alt_opt1 & alt_opt1_t::mask;
+   std::uint8_t unk7_masked = unk7 & unk7_t::mask;
+   std::uint8_t alt_opt0_masked = alt_opt0 & alt_opt0_t::mask;
+   std::uint8_t unk8_masked = unk8 & unk8_t::mask;
+   std::uint8_t data_format_masked = data_format & data_format_t::mask;
+   std::uint8_t unk9_masked = unk9 & unk9_t::mask;
+   std::uint8_t predicate_masked = predicate & predicate_t::mask;
+   std::uint8_t opcode1_masked = opcode1 & opcode1_t::mask;
+
+   std::uint64_t opt0_shift = (std::uint64_t)opt0_masked << SumBits<>::result;
+   std::uint64_t unk4_shift = (std::uint64_t)unk4_masked << SumBits<opt0_t>::result;
+   std::uint64_t mask1_op1_shift = (std::uint64_t)mask1_op1_masked << SumBits<unk4_t, opt0_t>::result;
+   std::uint64_t mask2_op1_shift = (std::uint64_t)mask2_op1_masked << SumBits<mask1_op1_t, unk4_t, opt0_t>::result;
+   std::uint64_t neg_op1_shift = (std::uint64_t)neg_op1_masked << SumBits<mask2_op1_t, mask1_op1_t, unk4_t, opt0_t>::result;
+   std::uint64_t abs_op1_shift = (std::uint64_t)abs_op1_masked << SumBits<neg_op1_t, mask2_op1_t, mask1_op1_t, unk4_t, opt0_t>::result;
+   std::uint64_t modifier0_shift = (std::uint64_t)modifier0_masked << SumBits<abs_op1_t, neg_op1_t, mask2_op1_t, mask1_op1_t, unk4_t, opt0_t>::result;
+   std::uint64_t modifier1_shift = (std::uint64_t)modifier1_masked << SumBits<modifier0_t, abs_op1_t, neg_op1_t, mask2_op1_t, mask1_op1_t, unk4_t, opt0_t>::result;
+   std::uint64_t opcode2_shift = (std::uint64_t)opcode2_masked << SumBits<modifier1_t, modifier0_t, abs_op1_t, neg_op1_t, mask2_op1_t, mask1_op1_t, unk4_t, opt0_t>::result;
+   std::uint64_t unk5_shift = (std::uint64_t)unk5_masked << SumBits<opcode2_t, modifier1_t, modifier0_t, abs_op1_t, neg_op1_t, mask2_op1_t, mask1_op1_t, unk4_t, opt0_t>::result;
+   std::uint64_t unk6_shift = (std::uint64_t)unk6_masked << SumBits<unk5_t, opcode2_t, modifier1_t, modifier0_t, abs_op1_t, neg_op1_t, mask2_op1_t, mask1_op1_t, unk4_t, opt0_t>::result;
+   std::uint64_t alt_opt1_shift = (std::uint64_t)alt_opt1_masked << SumBits<unk6_t, unk5_t, opcode2_t, modifier1_t, modifier0_t, abs_op1_t, neg_op1_t, mask2_op1_t, mask1_op1_t, unk4_t, opt0_t>::result;
+   std::uint64_t unk7_shift = (std::uint64_t)unk7_masked << SumBits<alt_opt1_t, unk6_t, unk5_t, opcode2_t, modifier1_t, modifier0_t, abs_op1_t, neg_op1_t, mask2_op1_t, mask1_op1_t, unk4_t, opt0_t>::result;
+   std::uint64_t alt_opt0_shift = (std::uint64_t)alt_opt0_masked << SumBits<unk7_t, alt_opt1_t, unk6_t, unk5_t, opcode2_t, modifier1_t, modifier0_t, abs_op1_t, neg_op1_t, mask2_op1_t, mask1_op1_t, unk4_t, opt0_t>::result;
+   std::uint64_t unk8_shift = (std::uint64_t)unk8_masked << SumBits<alt_opt0_t, unk7_t, alt_opt1_t, unk6_t, unk5_t, opcode2_t, modifier1_t, modifier0_t, abs_op1_t, neg_op1_t, mask2_op1_t, mask1_op1_t, unk4_t, opt0_t>::result;
+   std::uint64_t data_format_shift = (std::uint64_t)data_format_masked << SumBits<unk8_t, alt_opt0_t, unk7_t, alt_opt1_t, unk6_t, unk5_t, opcode2_t, modifier1_t, modifier0_t, abs_op1_t, neg_op1_t, mask2_op1_t, mask1_op1_t, unk4_t, opt0_t>::result;
+   std::uint64_t unk9_shift = (std::uint64_t)unk9_masked << SumBits<data_format_t, unk8_t, alt_opt0_t, unk7_t, alt_opt1_t, unk6_t, unk5_t, opcode2_t, modifier1_t, modifier0_t, abs_op1_t, neg_op1_t, mask2_op1_t, mask1_op1_t, unk4_t, opt0_t>::result;
+   std::uint64_t predicate_shift = (std::uint64_t)predicate_masked << SumBits<unk9_t, data_format_t, unk8_t, alt_opt0_t, unk7_t, alt_opt1_t, unk6_t, unk5_t, opcode2_t, modifier1_t, modifier0_t, abs_op1_t, neg_op1_t, mask2_op1_t, mask1_op1_t, unk4_t, opt0_t>::result;
+   std::uint64_t opcode1_shift = (std::uint64_t)opcode1_masked << SumBits<predicate_t, unk9_t, data_format_t, unk8_t, alt_opt0_t, unk7_t, alt_opt1_t, unk6_t, unk5_t, opcode2_t, modifier1_t, modifier0_t, abs_op1_t, neg_op1_t, mask2_op1_t, mask1_op1_t, unk4_t, opt0_t>::result;
+
+   return opcode1_shift | predicate_shift | unk9_shift | data_format_shift | unk8_shift | alt_opt0_shift | unk7_shift | alt_opt1_shift | unk6_shift | unk5_shift | opcode2_shift | modifier1_shift | modifier0_shift | abs_op1_shift | neg_op1_shift | mask2_op1_shift | mask1_op1_shift | unk4_shift | opt0_shift;
+}
+
+std::uint64_t INSTR_0x30000000_0x38000000_LOWER4(std::uint8_t opt1, std::uint8_t unk3, std::uint8_t op0, std::uint8_t unk2, std::uint8_t unk1, std::uint8_t op1, std::uint8_t unk0, std::uint8_t mask1_op0, std::uint8_t swz_en)
+{
+   typedef NbitsToMask<1> swz_en_t;
+   typedef NbitsToMask<1> mask1_op0_t;
+   typedef NbitsToMask<5> unk0_t;
+   typedef NbitsToMask<7> op1_t;
+   typedef NbitsToMask<2> unk1_t;
+   typedef NbitsToMask<5> unk2_t;
+   typedef NbitsToMask<7> op0_t;
+   typedef NbitsToMask<2> unk3_t;
+   typedef NbitsToMask<2> opt1_t;
+
+   std::uint8_t swz_en_masked = swz_en & swz_en_t::mask;
+   std::uint8_t mask1_op0_masked = mask1_op0 & mask1_op0_t::mask;
+   std::uint8_t unk0_masked = unk0 & unk0_t::mask;
+   std::uint8_t op1_masked = op1 & op1_t::mask;
+   std::uint8_t unk1_masked = unk1 & unk1_t::mask;
+   std::uint8_t unk2_masked = unk2 & unk2_t::mask;
+   std::uint8_t op0_masked = op0 & op0_t::mask;
+   std::uint8_t unk3_masked = unk3 & unk3_t::mask;
+   std::uint8_t opt1_masked = opt1 & opt1_t::mask;
+
+   std::uint64_t swz_en_shift = (std::uint64_t)swz_en_masked << SumBits<>::result;
+   std::uint64_t mask1_op0_shift = (std::uint64_t)mask1_op0_masked << SumBits<swz_en_t>::result;
+   std::uint64_t unk0_shift = (std::uint64_t)unk0_masked << SumBits<mask1_op0_t, swz_en_t>::result;
+   std::uint64_t op1_shift = (std::uint64_t)op1_masked << SumBits<unk0_t, mask1_op0_t, swz_en_t>::result;
+   std::uint64_t unk1_shift = (std::uint64_t)unk1_masked << SumBits<op1_t, unk0_t, mask1_op0_t, swz_en_t>::result;
+   std::uint64_t unk2_shift = (std::uint64_t)unk2_masked << SumBits<unk1_t, op1_t, unk0_t, mask1_op0_t, swz_en_t>::result;
+   std::uint64_t op0_shift = (std::uint64_t)op0_masked << SumBits<unk2_t, unk1_t, op1_t, unk0_t, mask1_op0_t, swz_en_t>::result;
+   std::uint64_t unk3_shift = (std::uint64_t)unk3_masked << SumBits<op0_t, unk2_t, unk1_t, op1_t, unk0_t, mask1_op0_t, swz_en_t>::result;
+   std::uint64_t opt1_shift = (std::uint64_t)opt1_masked << SumBits<unk3_t, op0_t, unk2_t, unk1_t, op1_t, unk0_t, mask1_op0_t, swz_en_t>::result;
+
+   return opt1_shift | unk3_shift | op0_shift | unk2_shift | unk1_shift | op1_shift | unk0_shift | mask1_op0_shift | swz_en_shift;
+}
+
+std::uint64_t INSTR_0x30000000_0x38000000(std::uint8_t opcode1, std::uint8_t predicate, std::uint8_t unk9, std::uint8_t data_format, std::uint8_t unk8, std::uint8_t alt_opt0, std::uint8_t unk7, std::uint8_t alt_opt1, std::uint8_t unk6, std::uint8_t unk5, std::uint8_t opcode2, std::uint8_t modifier1, std::uint8_t modifier0, std::uint8_t abs_op1, std::uint8_t neg_op1, std::uint8_t mask2_op1, std::uint8_t mask1_op1, std::uint8_t unk4, std::uint8_t opt0, std::uint8_t opt1, std::uint8_t unk3, std::uint8_t op0, std::uint8_t unk2, std::uint8_t unk1, std::uint8_t op1, std::uint8_t unk0, std::uint8_t mask1_op0, std::uint8_t swz_en)
+{
+   std::uint64_t hi = INSTR_0x30000000_0x38000000_HIGHER4(opcode1, predicate, unk9, data_format, unk8, alt_opt0, unk7, alt_opt1, unk6, unk5, opcode2, modifier1, modifier0, abs_op1, neg_op1, mask2_op1, mask1_op1, unk4, opt0);
+
+   std::uint64_t lo = INSTR_0x30000000_0x38000000_LOWER4(opt1, unk3, op0, unk2, unk1, op1, unk0, mask1_op0, swz_en);
 
    return (hi << 32) | lo;
 }

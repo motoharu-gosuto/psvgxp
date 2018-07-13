@@ -883,3 +883,38 @@ void bruteforce_INSTR_0x20000000_0x28000000_MAD_IRII_swizzles()
    }
    */
 }
+
+void brutforce_INSTR_0x20000000_0x28000000_operands()
+{
+   /*
+   for(std::uint8_t opN_sel = 0; opN_sel <= 3 ; opN_sel++)
+   {
+      std::uint64_t instr = INSTR_0x20000000_0x28000000_MAD_RRII_EXP1(4,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,2,opN_sel,0,0,0,0,0,0,0);
+      disasm_gxp_explicit(&opt, &header, instr);
+   }
+   */
+}
+
+void brutforce_INSTR_0x28000000_0x30000000_combos()
+{
+   /*
+   for(std::uint8_t opcode2 = 0; opcode2 <= 7; opcode2++)
+   {
+      for(std::uint8_t op_sel1 = 0; op_sel1 <= 1; op_sel1++)
+      {
+         for(std::uint8_t gr_sel = 0; gr_sel <= 1; gr_sel++)
+         {
+            for(std::uint8_t opcode3 = 0; opcode3 <= 7; opcode3++)
+            {
+               std::cout << (std::int32_t)opcode2 << "\t" << (std::int32_t)op_sel1 << "\t" << (std::int32_t)gr_sel << "\t" << (std::int32_t)opcode3 << "\t";
+               std::uint64_t instr = INSTR_0x28000000_0x30000000(5,0,0,0,0,0,0,0,0,0,opcode2,gr_sel,op_sel1,0,0,0,0,0,0,0,0,opcode3,0,0,0,0,0,0,0,0);
+               disasm_gxp_explicit(&opt, &header, instr);
+            }
+
+            std::cout << "--------------------------------------------------" << std::endl;
+         }
+      }
+   }
+   */
+}
+

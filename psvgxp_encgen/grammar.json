@@ -645,6 +645,45 @@
          }
       },
 
+      {
+         "name" : "INSTR_0x20000000_0x28000000_MAD_RRII_EXP1",
+         "high" : 
+         {
+            "opcode1" : 5,
+            "neg_op2i" : 1,
+            "predicate" : 2,
+            "unk4" : 1,
+            "op_sel2" : 1,
+            "data_format" : 1,
+            "swz_alt_op2i_2" : 1,
+            "swz_alt_opN" : 2,
+            "opN_swz" : 2,
+            "neg_opN" : 1,
+            "opcode2" : 3,
+            "gr_sel" : 1,
+            "op_sel1" : 1,
+            "swz_alt_op1i" : 2,
+            "op1i_swz" : 2,
+            "swz_alt_op2i_x" : 2,
+            "op2i_swz" : 2,
+            "opt0" : 2
+         },
+         "low" :
+         {
+            "optN" : 2,
+            "op0i" : 2,
+            "op0" : 7,
+            "opcode3" : 3,
+            "opN_sel" : 2,
+            "op3i" : 2,
+            "op2i" : 2,
+            "op1i" : 2,
+            "swz_mask2" : 1,
+            "swz_mask1" : 1,
+            "swz_en" : 1,
+            "opN" : 7
+         }
+      },
 
       {
          "name" : "INSTR_0x28000000_0x30000000",
@@ -653,7 +692,7 @@
             "opcode1" : 5,
             "neg_op2i" : 1,
             "predicate" : 2,
-            "unk4" : 1,
+            "unk1" : 1,
             "mask3" : 1,
             "data_format" : 1,
             "swz_alt_op2i_2" : 1,
@@ -684,7 +723,47 @@
             "swz_en" : 1,
             "opN" : 7
          }
+      },
+
+
+      {
+         "name" : "INSTR_0x30000000_0x38000000",
+         "high" : 
+         {
+            "opcode1" : 5,
+            "predicate" : 3,
+            "unk9" : 1,
+            "data_format" : 2,
+            "unk8" : 1,
+            "alt_opt0" : 1,
+            "unk7" : 1,
+            "alt_opt1" : 1,
+            "unk6" : 1,
+            "unk5" : 5,
+            "opcode2" : 2,
+            "modifier1" : 1,
+            "modifier0" : 1,
+            "abs_op1" : 1,
+            "neg_op1" : 1,
+            "mask2_op1" : 1,
+            "mask1_op1" : 1,
+            "unk4" : 1,
+            "opt0" : 2
+         },
+         "low" :
+         {
+            "opt1" : 2,
+            "unk3" : 2,
+            "op0" : 7,
+            "unk2" : 5,
+            "unk1" : 2,
+            "op1" : 7,
+            "unk0" : 5,
+            "mask1_op0" : 1,
+            "swz_en" : 1
+         }
       }
+
 
    ]
 }
