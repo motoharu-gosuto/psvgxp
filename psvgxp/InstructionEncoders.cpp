@@ -2314,31 +2314,34 @@ std::uint64_t INSTR_0x38000000_0x40000000_HIGHER4(std::uint8_t opcode1, std::uin
    return opcode1_shift | predicate_shift | unk1_shift | cond_shift | unk2_shift | opcode2_shift | unk3_shift | data_format_shift | unk4_shift;
 }
 
-std::uint64_t INSTR_0x38000000_0x40000000_LOWER4(std::uint8_t byte1, std::uint8_t byte2, std::uint8_t byte3, std::uint8_t byte4)
+std::uint64_t INSTR_0x38000000_0x40000000_LOWER4(std::uint8_t byte1, std::uint8_t chunk0, std::uint8_t op1, std::uint8_t op2, std::uint8_t op3)
 {
-   typedef NbitsToMask<8> byte4_t;
-   typedef NbitsToMask<8> byte3_t;
-   typedef NbitsToMask<8> byte2_t;
+   typedef NbitsToMask<6> op3_t;
+   typedef NbitsToMask<6> op2_t;
+   typedef NbitsToMask<6> op1_t;
+   typedef NbitsToMask<6> chunk0_t;
    typedef NbitsToMask<8> byte1_t;
 
-   std::uint8_t byte4_masked = byte4 & byte4_t::mask;
-   std::uint8_t byte3_masked = byte3 & byte3_t::mask;
-   std::uint8_t byte2_masked = byte2 & byte2_t::mask;
+   std::uint8_t op3_masked = op3 & op3_t::mask;
+   std::uint8_t op2_masked = op2 & op2_t::mask;
+   std::uint8_t op1_masked = op1 & op1_t::mask;
+   std::uint8_t chunk0_masked = chunk0 & chunk0_t::mask;
    std::uint8_t byte1_masked = byte1 & byte1_t::mask;
 
-   std::uint64_t byte4_shift = (std::uint64_t)byte4_masked << SumBits<>::result;
-   std::uint64_t byte3_shift = (std::uint64_t)byte3_masked << SumBits<byte4_t>::result;
-   std::uint64_t byte2_shift = (std::uint64_t)byte2_masked << SumBits<byte3_t, byte4_t>::result;
-   std::uint64_t byte1_shift = (std::uint64_t)byte1_masked << SumBits<byte2_t, byte3_t, byte4_t>::result;
+   std::uint64_t op3_shift = (std::uint64_t)op3_masked << SumBits<>::result;
+   std::uint64_t op2_shift = (std::uint64_t)op2_masked << SumBits<op3_t>::result;
+   std::uint64_t op1_shift = (std::uint64_t)op1_masked << SumBits<op2_t, op3_t>::result;
+   std::uint64_t chunk0_shift = (std::uint64_t)chunk0_masked << SumBits<op1_t, op2_t, op3_t>::result;
+   std::uint64_t byte1_shift = (std::uint64_t)byte1_masked << SumBits<chunk0_t, op1_t, op2_t, op3_t>::result;
 
-   return byte1_shift | byte2_shift | byte3_shift | byte4_shift;
+   return byte1_shift | chunk0_shift | op1_shift | op2_shift | op3_shift;
 }
 
-std::uint64_t INSTR_0x38000000_0x40000000(std::uint8_t opcode1, std::uint8_t predicate, std::uint8_t unk1, std::uint8_t cond, std::uint8_t unk2, std::uint8_t opcode2, std::uint8_t unk3, std::uint8_t data_format, std::uint8_t unk4, std::uint8_t byte1, std::uint8_t byte2, std::uint8_t byte3, std::uint8_t byte4)
+std::uint64_t INSTR_0x38000000_0x40000000(std::uint8_t opcode1, std::uint8_t predicate, std::uint8_t unk1, std::uint8_t cond, std::uint8_t unk2, std::uint8_t opcode2, std::uint8_t unk3, std::uint8_t data_format, std::uint8_t unk4, std::uint8_t byte1, std::uint8_t chunk0, std::uint8_t op1, std::uint8_t op2, std::uint8_t op3)
 {
    std::uint64_t hi = INSTR_0x38000000_0x40000000_HIGHER4(opcode1, predicate, unk1, cond, unk2, opcode2, unk3, data_format, unk4);
 
-   std::uint64_t lo = INSTR_0x38000000_0x40000000_LOWER4(byte1, byte2, byte3, byte4);
+   std::uint64_t lo = INSTR_0x38000000_0x40000000_LOWER4(byte1, chunk0, op1, op2, op3);
 
    return (hi << 32) | lo;
 }
