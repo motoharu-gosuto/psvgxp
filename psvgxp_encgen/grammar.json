@@ -770,19 +770,30 @@
          {
             "opcode1" : 5,
             "predicate" : 3,
+            "unk3" : 1,
+            "cond0" : 1,
+            "unk2" : 2,
+            "alt_opt0" : 1,
             "unk1" : 1,
-            "cond" : 1,
-            "unk2" : 6,
+            "alt_opt2" : 1,
+            "alt_opt3" : 1,
             "opcode2" : 2,
-            "unk3" : 3,
+            "unk0" : 3,
             "data_format" : 3,
-            "unk4" : 8
+            "cond1" : 1,
+            "op23_swz" : 3,
+            "opt0" : 4
          }
          ,
          "low" :
          {
-            "byte1" : 8,
-            "chunk0" : 6,
+            "opt2" : 2,
+            "opt3" : 2,
+            "swz_mask3" : 1,
+            "swz_mask2" : 1,
+            "swz_mask1" : 1,
+            "swz_en" : 1,
+            "op0" : 6,
             "op1" : 6,
             "op2" : 6,
             "op3" : 6
