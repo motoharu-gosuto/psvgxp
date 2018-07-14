@@ -92,12 +92,13 @@ void disasm_gxp_implicit(ScePsp2ShaderPerfOptions* opt, std::uint64_t instructio
       std::string disasm(out->disassembly);
       std::stringstream ss;
       ss << disasm;
-      
+
       //skip garbage in listing - find first instruction
       std::string line;
       int line_num = 0;
       bool skip = true;
-      while(std::getline(ss, line, '\n') && line_num < 1)
+      const bool print_all_instructions = false;
+      while(std::getline(ss, line, '\n') && (line_num == 0 || print_all_instructions))
       {
          if(line == "Primary program:") //there can be Secondary program:
          {
@@ -108,87 +109,84 @@ void disasm_gxp_implicit(ScePsp2ShaderPerfOptions* opt, std::uint64_t instructio
          if(skip)
             continue;
 
-         if(line_num == 0)
+         std::string::size_type semicolon = line.find(":");
+         std::string clean = trim(line.substr(semicolon + 1));
+
+         #ifdef DEBUG_OUTPUT
+         std::bitset<8> bs0((instruction_raw & 0xFF00000000000000) >> 56 );
+         std::bitset<8> bs1((instruction_raw & 0x00FF000000000000) >> 48 );
+         std::bitset<8> bs2((instruction_raw & 0x0000FF0000000000) >> 40 );
+         std::bitset<8> bs3((instruction_raw & 0x000000FF00000000) >> 32 );
+         #endif
+
+         //this code checks for expected predicates
+         std::string::size_type spaceIndex = clean.find(" ");
+         std::string possibleP = clean.substr(0, spaceIndex);
+         if(possibleP == "p0" || possibleP == "!p0" || possibleP == "Pn" || possibleP == "p1" || possibleP == "!p1" || possibleP == "p2" || possibleP == "!p2" || possibleP == "p3")
          {
-            std::string::size_type semicolon = line.find(":");
-            std::string clean = trim(line.substr(semicolon + 1));
-
-            #ifdef DEBUG_OUTPUT
-            std::bitset<8> bs0((instruction_raw & 0xFF00000000000000) >> 56 );
-            std::bitset<8> bs1((instruction_raw & 0x00FF000000000000) >> 48 );
-            std::bitset<8> bs2((instruction_raw & 0x0000FF0000000000) >> 40 );
-            std::bitset<8> bs3((instruction_raw & 0x000000FF00000000) >> 32 );
-            #endif
-
-            //this code checks for expected predicates
-            std::string::size_type spaceIndex = clean.find(" ");
-            std::string possibleP = clean.substr(0, spaceIndex);
-            if(possibleP == "p0" || possibleP == "!p0" || possibleP == "Pn" || possibleP == "p1" || possibleP == "!p1" || possibleP == "p2" || possibleP == "!p2" || possibleP == "p3")
+            //instruction may have operands or not
+            std::string::size_type spaceIndex2 = clean.find_first_of(" ", spaceIndex + 1);
+            if(spaceIndex2 == 0xFFFFFFFF)
             {
-               //instruction may have operands or not
-               std::string::size_type spaceIndex2 = clean.find_first_of(" ", spaceIndex + 1);
-               if(spaceIndex2 == 0xFFFFFFFF)
-               {
-                  std::string instr = clean.substr(spaceIndex + 1);  
+               std::string instr = clean.substr(spaceIndex + 1);  
 
-                  std::cout << std::hex <<std::setw(16) << std::setfill('0') << std::right << instruction_raw << "\t" 
-                     #ifdef DEBUG_OUTPUT
-                     << bs0.to_string() << "\t" 
-                     << bs1.to_string() << "\t" 
-                     << bs2.to_string() << "\t" 
-                     << bs3.to_string() << "\t" 
-                     #endif
-                     << possibleP << "\t" << instr
-                     << std::endl;
-               }
-               else
-               {
-                  std::string instr = clean.substr(spaceIndex + 1, spaceIndex2 - spaceIndex - 1);  
-                  std::string regs = trim(clean.substr(spaceIndex2));
-                  
-                  std::cout << std::hex <<std::setw(16) << std::setfill('0') << std::right << instruction_raw << "\t" 
-                     #ifdef DEBUG_OUTPUT
-                     << bs0.to_string() << "\t" 
-                     << bs1.to_string() << "\t" 
-                     << bs2.to_string() << "\t" 
-                     << bs3.to_string() << "\t" 
-                     #endif
-                     << possibleP << "\t" << instr 
-                     << "\t" << regs 
-                     << std::endl;
-               }
+               std::cout << std::hex <<std::setw(16) << std::setfill('0') << std::right << instruction_raw << "\t" 
+                  #ifdef DEBUG_OUTPUT
+                  << bs0.to_string() << "\t" 
+                  << bs1.to_string() << "\t" 
+                  << bs2.to_string() << "\t" 
+                  << bs3.to_string() << "\t" 
+                  #endif
+                  << possibleP << "\t" << instr
+                  << std::endl;
             }
             else
             {
-               //instruction may have operands or not
-               std::string instr = possibleP;
-               if(spaceIndex > 0)
-               {
-                  std::string regs = trim(clean.substr(spaceIndex + 1));
+               std::string instr = clean.substr(spaceIndex + 1, spaceIndex2 - spaceIndex - 1);  
+               std::string regs = trim(clean.substr(spaceIndex2));
 
-                  std::cout << std::hex <<std::setw(16) << std::setfill('0') << std::right << instruction_raw << "\t"
-                     #ifdef DEBUG_OUTPUT
-                     << bs0.to_string() << "\t" 
-                     << bs1.to_string() << "\t" 
-                     << bs2.to_string() << "\t" 
-                     << bs3.to_string() << "\t" 
-                     #endif
-                     << "" << "\t" << instr 
-                     << "\t" << regs 
-                     << std::endl;
-               }
-               else
-               {
-                  std::cout << std::hex <<std::setw(16) << std::setfill('0') << std::right << instruction_raw << "\t"
-                     #ifdef DEBUG_OUTPUT
-                     << bs0.to_string() << "\t" 
-                     << bs1.to_string() << "\t" 
-                     << bs2.to_string() << "\t" 
-                     << bs3.to_string() << "\t" 
-                     #endif
-                     << "" << "\t" << instr 
-                     << std::endl;
-               }
+               std::cout << std::hex <<std::setw(16) << std::setfill('0') << std::right << instruction_raw << "\t" 
+                  #ifdef DEBUG_OUTPUT
+                  << bs0.to_string() << "\t" 
+                  << bs1.to_string() << "\t" 
+                  << bs2.to_string() << "\t" 
+                  << bs3.to_string() << "\t" 
+                  #endif
+                  << possibleP << "\t" << instr 
+                  << "\t" << regs 
+                  << std::endl;
+            }
+         }
+         else
+         {
+            //instruction may have operands or not
+            std::string instr = possibleP;
+            if(spaceIndex > 0)
+            {
+               std::string regs = trim(clean.substr(spaceIndex + 1));
+
+               std::cout << std::hex <<std::setw(16) << std::setfill('0') << std::right << instruction_raw << "\t"
+                  #ifdef DEBUG_OUTPUT
+                  << bs0.to_string() << "\t" 
+                  << bs1.to_string() << "\t" 
+                  << bs2.to_string() << "\t" 
+                  << bs3.to_string() << "\t" 
+                  #endif
+                  << "" << "\t" << instr 
+                  << "\t" << regs 
+                  << std::endl;
+            }
+            else
+            {
+               std::cout << std::hex <<std::setw(16) << std::setfill('0') << std::right << instruction_raw << "\t"
+                  #ifdef DEBUG_OUTPUT
+                  << bs0.to_string() << "\t" 
+                  << bs1.to_string() << "\t" 
+                  << bs2.to_string() << "\t" 
+                  << bs3.to_string() << "\t" 
+                  #endif
+                  << "" << "\t" << instr 
+                  << std::endl;
             }
          }
          line_num++;
