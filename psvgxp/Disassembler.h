@@ -22,9 +22,9 @@ std::uint64_t* get_instr_ptr(const ScePsp2ShaderPerfOptions* opt, const SceGxmPr
 //disassemble donor gxp file that is specified in opt
 //instruction should be already set
 //instruction_raw is used only for output listing
-void disasm_gxp_implicit(ScePsp2ShaderPerfOptions* opt, std::uint64_t instruction_raw);
+void disasm_gxp_implicit(ScePsp2ShaderPerfOptions* opt, std::uint64_t instruction_raw, int num_instructions = 1);
 
 //disassemble donor gxp file that is specified in opt
 //instruction will be set by this function
 //instruction_raw is used only for output listing
-void disasm_gxp_explicit(ScePsp2ShaderPerfOptions* opt, const SceGxmProgram* header, std::uint64_t instruction_raw);
+void disasm_gxp_explicit(ScePsp2ShaderPerfOptions* opt, const SceGxmProgram* header, std::uint64_t instruction_raw, int num_instructions = 1);

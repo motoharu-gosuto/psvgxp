@@ -61,7 +61,7 @@ std::uint64_t* get_instr_ptr(const ScePsp2ShaderPerfOptions* opt, const SceGxmPr
 //disassemble donor gxp file that is specified in opt
 //instruction should be already set
 //instruction_raw is used only for output listing
-void disasm_gxp_implicit(ScePsp2ShaderPerfOptions* opt, std::uint64_t instruction_raw)
+void disasm_gxp_implicit(ScePsp2ShaderPerfOptions* opt, std::uint64_t instruction_raw, int num_instructions)
 {
    //disassemble gxp file
    const ScePsp2ShaderPerfOutput* out;
@@ -97,8 +97,8 @@ void disasm_gxp_implicit(ScePsp2ShaderPerfOptions* opt, std::uint64_t instructio
       std::string line;
       int line_num = 0;
       bool skip = true;
-      const bool print_all_instructions = false;
-      while(std::getline(ss, line, '\n') && (line_num == 0 || print_all_instructions))
+      
+      while(std::getline(ss, line, '\n') && (line_num < num_instructions))
       {
          if(line == "Primary program:") //there can be Secondary program:
          {
@@ -130,7 +130,7 @@ void disasm_gxp_implicit(ScePsp2ShaderPerfOptions* opt, std::uint64_t instructio
             {
                std::string instr = clean.substr(spaceIndex + 1);  
 
-               std::cout << std::hex <<std::setw(16) << std::setfill('0') << std::right << instruction_raw << "\t" 
+               std::cout << std::hex <<std::setw(16) << std::setfill('0') << std::right << (line_num == 0 ? instruction_raw : 0xDEADBEEFDEADBEEF) << "\t" 
                   #ifdef DEBUG_OUTPUT
                   << bs0.to_string() << "\t" 
                   << bs1.to_string() << "\t" 
@@ -145,7 +145,7 @@ void disasm_gxp_implicit(ScePsp2ShaderPerfOptions* opt, std::uint64_t instructio
                std::string instr = clean.substr(spaceIndex + 1, spaceIndex2 - spaceIndex - 1);  
                std::string regs = trim(clean.substr(spaceIndex2));
 
-               std::cout << std::hex <<std::setw(16) << std::setfill('0') << std::right << instruction_raw << "\t" 
+               std::cout << std::hex <<std::setw(16) << std::setfill('0') << std::right << (line_num == 0 ? instruction_raw : 0xDEADBEEFDEADBEEF) << "\t" 
                   #ifdef DEBUG_OUTPUT
                   << bs0.to_string() << "\t" 
                   << bs1.to_string() << "\t" 
@@ -165,7 +165,7 @@ void disasm_gxp_implicit(ScePsp2ShaderPerfOptions* opt, std::uint64_t instructio
             {
                std::string regs = trim(clean.substr(spaceIndex + 1));
 
-               std::cout << std::hex <<std::setw(16) << std::setfill('0') << std::right << instruction_raw << "\t"
+               std::cout << std::hex <<std::setw(16) << std::setfill('0') << std::right << (line_num == 0 ? instruction_raw : 0xDEADBEEFDEADBEEF) << "\t"
                   #ifdef DEBUG_OUTPUT
                   << bs0.to_string() << "\t" 
                   << bs1.to_string() << "\t" 
@@ -178,7 +178,7 @@ void disasm_gxp_implicit(ScePsp2ShaderPerfOptions* opt, std::uint64_t instructio
             }
             else
             {
-               std::cout << std::hex <<std::setw(16) << std::setfill('0') << std::right << instruction_raw << "\t"
+               std::cout << std::hex <<std::setw(16) << std::setfill('0') << std::right << (line_num == 0 ? instruction_raw : 0xDEADBEEFDEADBEEF) << "\t"
                   #ifdef DEBUG_OUTPUT
                   << bs0.to_string() << "\t" 
                   << bs1.to_string() << "\t" 
@@ -189,6 +189,7 @@ void disasm_gxp_implicit(ScePsp2ShaderPerfOptions* opt, std::uint64_t instructio
                   << std::endl;
             }
          }
+         
          line_num++;
       }
    }
@@ -200,10 +201,10 @@ void disasm_gxp_implicit(ScePsp2ShaderPerfOptions* opt, std::uint64_t instructio
 //disassemble donor gxp file that is specified in opt
 //instruction will be set by this function
 //instruction_raw is used only for output listing
-void disasm_gxp_explicit(ScePsp2ShaderPerfOptions* opt, const SceGxmProgram* header, std::uint64_t instruction_raw)
+void disasm_gxp_explicit(ScePsp2ShaderPerfOptions* opt, const SceGxmProgram* header, std::uint64_t instruction_raw, int num_instructions)
 {
    std::uint64_t* instr_raw_ptr = get_instr_ptr(opt, header, 0);
 
    *instr_raw_ptr = instruction_raw;
-   disasm_gxp_implicit(opt, instruction_raw);
+   disasm_gxp_implicit(opt, instruction_raw, num_instructions);
 }
