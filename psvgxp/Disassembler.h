@@ -28,3 +28,5 @@ void disasm_gxp_implicit(ScePsp2ShaderPerfOptions* opt, std::uint64_t instructio
 //instruction will be set by this function
 //instruction_raw is used only for output listing
 void disasm_gxp_explicit(ScePsp2ShaderPerfOptions* opt, const SceGxmProgram* header, std::uint64_t instruction_raw, int num_instructions = 1);
+
+void set_gxp_instruction(ScePsp2ShaderPerfOptions* opt, const SceGxmProgram* header, std::uint64_t instruction_raw, int index);

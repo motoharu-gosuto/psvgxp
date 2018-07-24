@@ -109,6 +109,9 @@ void disasm_gxp_implicit(ScePsp2ShaderPerfOptions* opt, std::uint64_t instructio
          if(skip)
             continue;
 
+         if(line.empty())
+            continue;
+
          std::string::size_type semicolon = line.find(":");
          std::string clean = trim(line.substr(semicolon + 1));
 
@@ -207,4 +210,11 @@ void disasm_gxp_explicit(ScePsp2ShaderPerfOptions* opt, const SceGxmProgram* hea
 
    *instr_raw_ptr = instruction_raw;
    disasm_gxp_implicit(opt, instruction_raw, num_instructions);
+}
+
+void set_gxp_instruction(ScePsp2ShaderPerfOptions* opt, const SceGxmProgram* header, std::uint64_t instruction_raw, int index)
+{
+   std::uint64_t* instr_raw_ptr = get_instr_ptr(opt, header, index);
+
+   *instr_raw_ptr = instruction_raw;
 }
